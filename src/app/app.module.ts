@@ -8,6 +8,7 @@ import { DestinationComponent } from './components/pages/destination/destination
 import { CrewComponent } from './components/pages/crew/crew.component'; 
 import { TechnologyComponent } from './components/pages/technology/technology.component';
 import { NavComponent } from './components/shared/nav/nav.component'; 
+import { DataService } from './Services/data.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { NavComponent } from './components/shared/nav/nav.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
