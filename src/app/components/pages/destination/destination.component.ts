@@ -19,16 +19,16 @@ export class DestinationComponent implements OnInit {
   GetData(){
     if(sessionStorage.getItem('destinations')==null || sessionStorage.getItem('destinations')==undefined) {
       return this.dataService.getData('destinations').subscribe((data) =>{
-        this.destinations = {'destinations': data}
-        sessionStorage.setItem('destinations',JSON.stringify(this.destinations) )
-        this.destinations = sessionStorage.getItem('destinations')
-        this.destinations =  JSON.parse(this.destinations)
-        this.destinations = this.destinations.destinations
+        this.destinations = {'destinations': data};
+        sessionStorage.setItem('destinations',JSON.stringify(this.destinations) );
+        this.destinations = sessionStorage.getItem('destinations');
+        this.destinations =  JSON.parse(this.destinations);
+        this.destinations = this.destinations.destinations;
       });
     } else{
-      this.destinations = sessionStorage.getItem('crew')
-      this.destinations =  JSON.parse(this.destinations)
-      this.destinations = this.destinations.destinations
+      this.destinations = sessionStorage.getItem('crew');
+      this.destinations =  JSON.parse(this.destinations);
+      this.destinations = this.destinations.destinations;
       return true;
     }
   }

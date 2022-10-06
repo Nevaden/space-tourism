@@ -1,17 +1,48 @@
-
 <section class="large">
-    <img src="../../../../assets/shared/logo.svg" alt="space-tourism logo">
-    <span class="hr"></span>
-    <nav class="navItems">
-        <a class="navItem" routerLinkActive="active" routerLink="/home">HOME</a>
-        <a class="navItem" routerLinkActive="active"  routerLink="/destination">DESTINATION</a>
-        <a class="navItem" routerLinkActive="active"  routerLink="/crew">CREW</a>
-        <a class="navItem" routerLinkActive="active"  routerLink="/technology">TECHNOLOGY</a>
+  <img class="largeLogo" src="../../../../assets/shared/logo.svg" alt="space-tourism logo" />
+  <span class="hr"></span>
+  <nav class="navItems">
+    <a class="navItem" routerLinkActive="active" routerLink="/home"><p>00</p>HOME</a>
+    <a class="navItem" routerLinkActive="active" routerLink="/destination"
+      ><p>01</p>DESTINATION</a
+    >
+    <a class="navItem" routerLinkActive="active" routerLink="/crew"><p>02</p>CREW</a>
+    <a class="navItem" routerLinkActive="active" routerLink="/technology"
+      ><p>03</p>TECHNOLOGY</a
+    >
+  </nav>
+</section>
+
+
+<div class="navContainer mobile-Nav">
+  <img
+    class="logo displayBlock"
+    routerLink="/home"
+    src="../../../../assets/shared/logo.svg"
+    alt=""
+  />
+  <img
+    (click)="toggleNavModal()"
+    id="hamburger"
+    class="hamburger displayBlock"
+    src="../../../../assets/shared/icon-hamburger.svg"
+    alt=""
+  />
+  <img
+    src="../../../../assets/shared/icon-close.svg"
+    class="closeButton displayNone"
+    id="closeButton"
+    (click)="toggleNavModal()"
+  />
+</div>
+<div class="backDrop displayNone" id="backDrop" (click)="toggleNavModal()">
+  <section class="navModal displayNone" id="navModal">
+    <nav class="navItems" >
+      <a routerLink="/home" class="navItem"><p>00</p> HOME</a>
+      <a routerLink="/destination" class="navItem"><p>01</p> DESTINATIONS</a>
+      <a routerLink="/crew" class="navItem"><p>02</p> CREW</a>
+      <a routerLink="/technology" class="navItem"><p>03</p> TECHNOLOGY</a>
     </nav>
-</section>
-
-
-<section class="mobile">
-
-</section>
+  </section>
+</div>
 
