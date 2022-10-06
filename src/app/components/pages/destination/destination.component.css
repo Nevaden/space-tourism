@@ -1,0 +1,19 @@
+.background{
+    background-image: url(../../../../assets/destination/background-destination-mobile.jpg);
+    background-size: cover;
+    z-index: -20;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    background-repeat: no-repeat;
+      
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+}
+
+@media only screen and (min-width: 1200px) {
+    .background{
+        background-image: url(../../../../assets/destination/background-destination-desktop.jpg);
+    }
+}
