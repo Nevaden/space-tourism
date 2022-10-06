@@ -12,11 +12,148 @@
     min-height: 100%;
 }
     
+.homeBlurb{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 58px;
+}
+
+.blurbContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.blurbInit{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 2.7px;
+    color: #D0D6F9;
+}
+.blurbTitle{
+    height: 100px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.blurbTitle{
+    font-family: 'Bellefair', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 100px;
+    /* identical to box height, or 125% */
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+
+.blurbText{
+    width: 327px;
+}
+.blurbText{
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: #D0D6F9;  
+}
+
+.exploreButton{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    margin-top: 81px;
+}
+
+.exploreButton{
+    background: #FFFFFF;
+    font-family: 'Bellefair';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 1.25px;
+    color: #0B0D17;
+    font-family: 'Bellefair', serif;
+}
+
 
 @media only screen and (min-width: 1200px) {
 
     .background{
         background-image: url(../../../../assets/home/background-home-desktop.jpg);
 
+    }
+    
+    .homeBlurb{
+        margin-top: 251px;
+        margin-left: 165px;
+        margin-right: 165px;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .blurbTitle{
+        text-align: center;
+    }
+    .blurbInit, .blurbText{
+        text-align: left;
+    }
+
+    .blurbInit{
+        font-family: 'Barlow Condensed', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 4.725px;
+        color: #D0D6F9;
+    }
+    .blurbTitle{
+        height: 172px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    .blurbTitle{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 150px;
+        line-height: 172px;
+        color: #FFFFFF;
+    }
+    .blurbText{
+        width: 444px;
+    }
+    .blurbText{
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 32px;
+        color: #D0D6F9;
+    }
+
+    .exploreButton{
+        height: 274px;
+        width: 274px;
+    }
+    .exploreButton{
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 37px;
+        letter-spacing: 2px;
+        color: #0B0D17;
     }
 }
