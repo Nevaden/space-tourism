@@ -26,7 +26,7 @@ export class DestinationComponent implements OnInit {
         this.destinations = this.destinations.destinations;
       });
     } else{
-      this.destinations = sessionStorage.getItem('crew');
+      this.destinations = sessionStorage.getItem('destinations');
       this.destinations =  JSON.parse(this.destinations);
       this.destinations = this.destinations.destinations;
       return true;
