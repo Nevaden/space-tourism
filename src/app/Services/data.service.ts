@@ -14,6 +14,7 @@ export class DataService {
 
   url = `${this.firebaseURL}${this.jsonEXT}`
   page: any;
+  data: any;
   // urlCrew = `${this.firebaseURL}${this.crew}${this.jsonEXT}`
   // urlTechnology = `${this.firebaseURL}${this.technology}${this.jsonEXT}`
   // urlDestination = `${this.firebaseURL}${this.destination}${this.jsonEXT}`
@@ -29,8 +30,10 @@ export class DataService {
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
     return this.http.get(this.fieldUrl)
   }
-  getDataPlanet(field: string): Observable<any>{
+  getDataPlanet(field: string, subPage: string): Observable<any>{
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
+    this.data = this.http.get(this.fieldUrl)
+
     return this.http.get(this.fieldUrl)
   }
 }

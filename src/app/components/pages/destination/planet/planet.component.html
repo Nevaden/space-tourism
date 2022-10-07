@@ -1,9 +1,9 @@
 <p>planet works!</p>
 
-<p class="testing">{{id.name}}</p>
+<p class="testing">{{planet.name}}</p>
 
-<img src={{destinations[0].images.png}} alt="">
-<ul class="planetList" *ngFor="let listItem of destinations">
+<img src={{planet.images.png}} alt="">
+<ul class="planetList" *ngFor="let listItem of destination">
     <li id={{listItem.name}} [routerLink]="['/destination',listItem.name]" >{{listItem.name | uppercase}}</li>
 </ul>
 

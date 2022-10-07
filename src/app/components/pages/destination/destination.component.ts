@@ -8,7 +8,7 @@ import { DataService } from 'src/app/Services/data.service';
   styleUrls: ['./destination.component.css']
 })
 export class DestinationComponent implements OnInit {
-  destinations: any;
+  destination: any;
   id: any;
   found: boolean = false;
 
@@ -25,36 +25,36 @@ export class DestinationComponent implements OnInit {
     this.id = this.id[this.id.length-1]
 
 
-    for (let i = 0; i < this.destinations.length; i++){
+    for (let i = 0; i < this.destination.length; i++){
 
 
-      if (this.id == this.destinations[i].name ){
-        this.router.navigate(['/destination', this.destinations[i].name]) 
+      if (this.id == this.destination[i].name ){
+        this.router.navigate(['/destination', this.destination[i].name]) 
         this.found = true;
         break;
       } 
     };
 
     if (!this.found ){
-      this.router.navigate(['/destination', this.destinations[0].name]) 
+      this.router.navigate(['/destination', this.destination[0].name]) 
     } 
 
   }
 
 
   GetData(){
-    if(sessionStorage.getItem('destinations')==null || sessionStorage.getItem('destinations')==undefined) {
-      return this.dataService.getData('destinations').subscribe((data) =>{
-        this.destinations = {'destinations': data};
-        sessionStorage.setItem('destinations',JSON.stringify(this.destinations) );
-        this.destinations = sessionStorage.getItem('destinations');
-        this.destinations =  JSON.parse(this.destinations);
-        this.destinations = this.destinations.destinations;
+    if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
+      return this.dataService.getData('destination').subscribe((data) =>{
+        this.destination = {'destination': data};
+        sessionStorage.setItem('destination',JSON.stringify(this.destination) );
+        this.destination = sessionStorage.getItem('destination');
+        this.destination =  JSON.parse(this.destination);
+        this.destination = this.destination.destination;
       });
     } else{
-      this.destinations = sessionStorage.getItem('destinations');
-      this.destinations =  JSON.parse(this.destinations);
-      this.destinations = this.destinations.destinations;
+      this.destination = sessionStorage.getItem('destination');
+      this.destination =  JSON.parse(this.destination);
+      this.destination = this.destination.destination;
       return true;
     }
   }
