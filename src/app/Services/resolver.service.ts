@@ -14,7 +14,7 @@ export class ResolverService implements Resolve<Planet> {
     // let returnValue = sessionStorage.getItem(route.params['id'])
     // return sessionStorage.getItem(route.params['id'])
     console.log("do we ever do this?")
-    console.log(route.parent?.routeConfig?.path,"first child")
+
     return this.dataService.getDataPlanet(route.parent?.routeConfig?.path!,route.params['id'] )
   }
 

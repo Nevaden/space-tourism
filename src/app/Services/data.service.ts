@@ -33,7 +33,12 @@ export class DataService {
   getDataPlanet(field: string, subPage: string): Observable<any>{
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
     this.data = this.http.get(this.fieldUrl)
-
     return this.http.get(this.fieldUrl)
+  }
+
+  getSessionData(page: string, subPage: string): Observable<any>{
+    this.data = JSON.parse(sessionStorage.getItem('destination')!)
+    console.log(this.data)
+    return this.data;
   }
 }

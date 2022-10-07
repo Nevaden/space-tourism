@@ -10,7 +10,7 @@ import { DataService } from 'src/app/Services/data.service';
 export class DestinationComponent implements OnInit {
   destination: any;
   id: any;
-  found: boolean = false;
+  found: boolean | undefined = false;
 
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
@@ -20,14 +20,11 @@ export class DestinationComponent implements OnInit {
   ngOnInit(): void {
     this.GetData();
 
-
     this.id = this.router.url.split("/")
     this.id = this.id[this.id.length-1]
 
 
     for (let i = 0; i < this.destination.length; i++){
-
-
       if (this.id == this.destination[i].name ){
         this.router.navigate(['/destination', this.destination[i].name]) 
         this.found = true;
@@ -35,28 +32,37 @@ export class DestinationComponent implements OnInit {
       } 
     };
 
-    if (!this.found ){
-      this.router.navigate(['/destination', this.destination[0].name]) 
-    } 
+
 
   }
 
 
   GetData(){
+
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
+
         this.destination = {'destination': data};
         sessionStorage.setItem('destination',JSON.stringify(this.destination) );
         this.destination = sessionStorage.getItem('destination');
         this.destination =  JSON.parse(this.destination);
         this.destination = this.destination.destination;
+        if (!this.found || this.id == undefined ){
+          console.log(this.destination[0].name,"am I ?")
+          this.router.navigate(['/destination', this.destination[0].name]) 
+        } 
       });
     } else{
+
       this.destination = sessionStorage.getItem('destination');
       this.destination =  JSON.parse(this.destination);
       this.destination = this.destination.destination;
-      return true;
     }
+    if (!this.found || this.id == undefined ){
+      console.log(this.destination[0].name,"am I ?")
+      this.router.navigate(['/destination', this.destination[0].name]) 
+    } 
+    return true;
   }
 
 }

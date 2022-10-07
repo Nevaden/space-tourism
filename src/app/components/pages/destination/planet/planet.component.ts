@@ -20,6 +20,7 @@ export class PlanetComponent implements OnInit {
 
   ngOnInit(): void {
     this.GetData();
+    
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
@@ -40,7 +41,6 @@ export class PlanetComponent implements OnInit {
             this.planet = this.planet[i]
           }
         }
-        console.log(this.planet,"what am i?")
       }
     );
 
