@@ -11,6 +11,8 @@ import { NavComponent } from './components/shared/nav/nav.component';
 import { DataService } from './Services/data.service';
 import { PlanetComponent } from './components/pages/destination/planet/planet.component';
 import { ResolverService } from './Services/resolver.service';
+import { PersonnelComponent } from './components/pages/crew/personnel/personnel.component';
+import { TechComponent } from './components/pages/technology/tech/tech.component'; 
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ResolverService } from './Services/resolver.service';
     CrewComponent,
     TechnologyComponent,
     NavComponent,
-    PlanetComponent
+    PlanetComponent,
+    PersonnelComponent,
+    TechComponent
   ],
   imports: [
     BrowserModule,

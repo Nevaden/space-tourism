@@ -18,6 +18,8 @@ export class DestinationComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+
+
     this.GetData();
 
     this.id = this.router.url.split("/")
@@ -31,12 +33,10 @@ export class DestinationComponent implements OnInit {
         break;
       } 
     };
-
-
-
   }
 
 
+  
   GetData(){
 
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
@@ -48,7 +48,6 @@ export class DestinationComponent implements OnInit {
         this.destination =  JSON.parse(this.destination);
         this.destination = this.destination.destination;
         if (!this.found || this.id == undefined ){
-          console.log(this.destination[0].name,"am I ?")
           this.router.navigate(['/destination', this.destination[0].name]) 
         } 
       });
@@ -59,7 +58,6 @@ export class DestinationComponent implements OnInit {
       this.destination = this.destination.destination;
     }
     if (!this.found || this.id == undefined ){
-      console.log(this.destination[0].name,"am I ?")
       this.router.navigate(['/destination', this.destination[0].name]) 
     } 
     return true;

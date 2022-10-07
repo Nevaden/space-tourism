@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-planet',
   templateUrl: './planet.component.html',
@@ -12,31 +13,30 @@ export class PlanetComponent implements OnInit {
   planets: any = [];
   planet: any = {};
   id: any= null;
-  subscriptionItem: any;
 
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.GetData();
-    
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
+    this.GetData();
+
+    
     this.route.params.subscribe(
       (params: Params) => {
-        this.id.name = params['id']
+        this.id.name = params['id']  
       }
     )
+
 
 
     this.route.data.subscribe(
       (data: Data) => {
         this.planet = data['Planet']
-        console.log(this.planet,"planet")
         for (let i = 0; i < this.planet.length; i++){
-          console.log(this.planet[i].name.trim() , this.id.name.trim(), "this is our check")
           if (this.planet[i].name.trim() == this.id.name.trim()) {
             this.planet = this.planet[i]
           }
@@ -45,16 +45,28 @@ export class PlanetComponent implements OnInit {
     );
 
 
-
-
   }
 
 
+
+
+  GetSessionData(){
+    this.dataService.getSessionData("destination",this.id.name).subscribe((data) => {
+      this.planet = data;
+      console.log(this.planet, "data session")
+      for (let i = 0; i < this.planet.length; i++){
+        if (this.planet[i].name.trim() == this.id.name.trim()) {
+          this.planet = this.planet[i]
+        }
+      }    
+    })
+  }
   
   GetData(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
         this.destination = {'destination': data};
+        console.log(this.destination,"data")
         sessionStorage.setItem('destination',JSON.stringify(this.destination) );
         this.destination = sessionStorage.getItem('destination');
         this.destination =  JSON.parse(this.destination);

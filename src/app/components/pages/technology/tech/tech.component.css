@@ -1,0 +1,43 @@
+
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.techlList{
+    list-style: none;
+    
+    display: flex;
+}
+
+.techlList li{
+    height: 40px;
+    width: 40px;
+    background: none;
+    mix-blend-mode: normal;
+    opacity: 0.25;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Bellefair', serif;
+    color: #FFFFFF;
+}
+
+.active{
+    background: #FFFFFF !important;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    
+    color: #0B0D17!important;  
+}

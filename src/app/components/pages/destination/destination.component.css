@@ -11,7 +11,7 @@
     min-width: 100%;
     min-height: 100%;
 }
-.destinationHeader p{
+.Header p{
     font-family: 'Barlow Condensed', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -24,12 +24,12 @@
     mix-blend-mode: normal;
     opacity: 0.25; 
 }
-.destinationHeader{
+.Header{
     display: flex;
     justify-content: center;
     margin-top: 24px;
 }
-.destinationHeader{
+.Header{
     font-family: 'Barlow Condensed', sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -41,7 +41,7 @@
     color: #FFFFFF;
 }
 
-.destinationHeader p{
+.Header p{
     margin-right: 18px;
 }
 

@@ -38,7 +38,12 @@ export class DataService {
 
   getSessionData(page: string, subPage: string): Observable<any>{
     this.data = JSON.parse(sessionStorage.getItem('destination')!)
-    console.log(this.data)
+    for (let i = 0; i < this.data.length; i++){
+      if(this.data[i].name.trim() == subPage.trim()){
+        this.data = this.data[i];
+      }
+    }
+    console.log(this.data, 'the data')
     return this.data;
   }
 }

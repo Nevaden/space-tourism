@@ -2,11 +2,13 @@
 
 
 <img src={{planet.images.png}} alt="">
-<ul class="planetList" *ngFor="let listItem of destination">
-    <li id={{listItem.name}} [routerLink]="['/destination',listItem.name]" >{{listItem.name | uppercase}}</li>
+
+<ul class="planetList" >
+    <li *ngFor="let listItem of destination" id={{listItem.name}} [routerLink]="['/destination',listItem.name]" >{{listItem.name | uppercase}}</li>
 </ul>
 
-<!-- <li [routerLink]="['/destination','Moon']" (click)="onPlanetClick(this)">MOON</li>
-<li [routerLink]="['/destination','Mars']" (click)="onPlanetClick(this)" >MARS</li>
-<li [routerLink]="['/destination','Europa']" (click)="onPlanetClick(this)">EUROPA</li>
-<li [routerLink]="['/destination','Titan']" (click)="onPlanetClick(this)">TITAN</li> -->
+<h2>{{planet.name | uppercase}}</h2>
+<p>{{planet.description}}</p>
+<hr>
+<p>{{planet.distance}}</p>
+<p>{{planet.travel}}</p>

@@ -1,33 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { DataService } from 'src/app/Services/data.service';
+import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-crew',
-  templateUrl: './crew.component.html',
-  styleUrls: ['./crew.component.css']
+  selector: 'app-personnel',
+  templateUrl: './personnel.component.html',
+  styleUrls: ['./personnel.component.css']
 })
-export class CrewComponent implements OnInit {
+export class PersonnelComponent implements OnInit {
   crew: any;
-  id: any;
-  found: any;
-
+  person: any = {};
+  id: any= null;
   constructor(private dataService: DataService,
+    private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
+   this.id = {
+      name: this.route.snapshot.params['id'],   
+    }
     this.GetData();
-    this.id = this.router.url.split("/")
-    this.id = this.id[this.id.length-1]
 
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id.name = params['id']  
+      }
+    )
 
-    for (let i = 0; i < this.crew.length; i++){
-      if (this.id == this.crew[i].name ){
-        this.router.navigate(['/destination', this.crew[i].name]) 
-        this.found = true;
-        break;
-      } 
-    };
+      this.route.data.subscribe(
+      (data: Data) => {
+        this.person = data['Person']
+        for (let i = 0; i < this.person.length; i++){
+          if (this.person[i].name.trim() == this.id.name.trim()) {
+            this.person = this.person[i]
+          }
+        }
+      }
+    );  
+    
   }
 
   GetData(){
@@ -38,17 +48,11 @@ export class CrewComponent implements OnInit {
         this.crew = sessionStorage.getItem('crew')
         this.crew =  JSON.parse(this.crew)
         this.crew = this.crew.crew
-        if (!this.found || this.id == undefined ){
-          this.router.navigate(['/crew', this.crew[0].name]) 
-        }        
       });
     } else{
       this.crew = sessionStorage.getItem('crew')
       this.crew =  JSON.parse(this.crew)
       this.crew = this.crew.crew
-      if (!this.found || this.id == undefined ){
-        this.router.navigate(['/crew', this.crew[0].name]) 
-      }   
       return true;
     }
   }

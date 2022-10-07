@@ -13,8 +13,6 @@ export class ResolverService implements Resolve<Planet> {
   | Promise<Planet> | Planet  {
     // let returnValue = sessionStorage.getItem(route.params['id'])
     // return sessionStorage.getItem(route.params['id'])
-    console.log("do we ever do this?")
-
     return this.dataService.getDataPlanet(route.parent?.routeConfig?.path!,route.params['id'] )
   }
 

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CrewComponent } from './components/pages/crew/crew.component';
+import { PersonnelComponent } from './components/pages/crew/personnel/personnel.component';
 import { DestinationComponent } from './components/pages/destination/destination.component';
 import { PlanetComponent } from './components/pages/destination/planet/planet.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { TechComponent } from './components/pages/technology/tech/tech.component';
 import { TechnologyComponent } from './components/pages/technology/technology.component';
 import { ResolverService } from './Services/resolver.service';
 
@@ -14,10 +16,10 @@ const routes: Routes = [
     {path: ':id', component: PlanetComponent, resolve: {Planet: ResolverService}},
   ]},
   {path: 'crew', component: CrewComponent, children: [
-    {path: ':id', component: CrewComponent},
+    {path: ':id', component: PersonnelComponent, resolve: {Person: ResolverService}},
   ]},
   {path: 'technology', component: TechnologyComponent, children: [
-    {path: ':id', component: TechnologyComponent},
+    {path: ':id', component: TechComponent, resolve: {Tech: ResolverService}},
   ]},
   {path: '*', component: HomeComponent}
 ];

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
@@ -8,11 +9,24 @@ import { DataService } from 'src/app/Services/data.service';
 })
 export class TechnologyComponent implements OnInit {
   technology: any;
-
-  constructor(private dataService: DataService) { }
+  id: any;
+  found: any;
+  constructor(private dataService: DataService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.GetData();
+    this.id = this.router.url.split("/")
+    this.id = this.id[this.id.length-1]
+
+    for (let i = 0; i < this.technology.length; i++){
+      if (this.id == this.technology[i].name ){
+        this.router.navigate(['/technology', this.technology[i].name]) 
+        this.found = true;
+        break;
+      } 
+    };
+
   }
  GetData(){
     if(sessionStorage.getItem('technology')==null || sessionStorage.getItem('technology')==undefined) {
@@ -22,12 +36,18 @@ export class TechnologyComponent implements OnInit {
         this.technology = sessionStorage.getItem('technology')
         this.technology =  JSON.parse(this.technology)
         this.technology = this.technology.technology
-        console.log(this.technology,"MY TECH OBJ")
+
+        if (!this.found || this.id == undefined ){
+          this.router.navigate(['/technology', this.technology[0].name]) 
+        }   
       });
     } else{
       this.technology = sessionStorage.getItem('technology')
       this.technology =  JSON.parse(this.technology)
       this.technology = this.technology.technology
+      if (!this.found || this.id == undefined ){
+        this.router.navigate(['/technology', this.technology[0].name]) 
+      }   
       return true;
     }
   }
