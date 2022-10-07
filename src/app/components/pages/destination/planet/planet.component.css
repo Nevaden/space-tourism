@@ -1,0 +1,14 @@
+.planetList{
+    list-style: none;
+    display: flex;
+    gap: 26px;
+    margin-left: 200px;
+    font-size: 30px;
+    color: #FFF
+}
+
+.testing{
+    font-size: 30px;
+    margin-left: 200px;
+    color: #FFF
+}

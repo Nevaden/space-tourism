@@ -17,6 +17,7 @@
     z-index: -1;
     margin: 0;
     top: 0px;
+    z-index: 6;
 } 
 
 .closeButton{
@@ -80,6 +81,8 @@
     align-items: center;
     margin-left: 24px;
     margin-right: 24px;
+    position: relative;
+    z-index: 16;
 }
 .logo{
     margin-top: 24px;

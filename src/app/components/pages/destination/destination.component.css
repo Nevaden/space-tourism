@@ -11,6 +11,43 @@
     min-width: 100%;
     min-height: 100%;
 }
+.destinationHeader p{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+    
+    color: #FFFFFF;
+    
+    mix-blend-mode: normal;
+    opacity: 0.25; 
+}
+.destinationHeader{
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+.destinationHeader{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+.destinationHeader p{
+    margin-right: 18px;
+}
+
+.planetList{
+    list-style: none;
+}
 
 @media only screen and (min-width: 1200px) {
     .background{

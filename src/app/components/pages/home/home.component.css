@@ -18,11 +18,13 @@
     justify-content: center;
     align-items: center;
     margin-top: 58px;
+    z-index: -6;
 }
 
 .blurbContainer{
     display: flex;
     flex-direction: column;
+    z-index: -6;
 }
 
 .blurbInit{
@@ -76,6 +78,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 81px;
+    z-index: -6;
 }
 
 .exploreButton{

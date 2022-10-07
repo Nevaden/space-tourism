@@ -22,6 +22,7 @@ export class TechnologyComponent implements OnInit {
         this.technology = sessionStorage.getItem('technology')
         this.technology =  JSON.parse(this.technology)
         this.technology = this.technology.technology
+        console.log(this.technology,"MY TECH OBJ")
       });
     } else{
       this.technology = sessionStorage.getItem('technology')

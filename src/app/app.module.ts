@@ -9,6 +9,8 @@ import { CrewComponent } from './components/pages/crew/crew.component';
 import { TechnologyComponent } from './components/pages/technology/technology.component';
 import { NavComponent } from './components/shared/nav/nav.component'; 
 import { DataService } from './Services/data.service';
+import { PlanetComponent } from './components/pages/destination/planet/planet.component';
+import { ResolverService } from './Services/resolver.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,15 @@ import { DataService } from './Services/data.service';
     DestinationComponent,
     CrewComponent,
     TechnologyComponent,
-    NavComponent
+    NavComponent,
+    PlanetComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService, ResolverService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

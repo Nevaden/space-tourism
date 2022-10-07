@@ -10,8 +10,10 @@ export class DataService {
   firebaseURL= 'https://space-tourism-8e141-default-rtdb.firebaseio.com/'
   fieldUrl: any;
   jsonEXT = '.json'
+  output: any = [];
 
   url = `${this.firebaseURL}${this.jsonEXT}`
+  page: any;
   // urlCrew = `${this.firebaseURL}${this.crew}${this.jsonEXT}`
   // urlTechnology = `${this.firebaseURL}${this.technology}${this.jsonEXT}`
   // urlDestination = `${this.firebaseURL}${this.destination}${this.jsonEXT}`
@@ -27,5 +29,8 @@ export class DataService {
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
     return this.http.get(this.fieldUrl)
   }
-
+  getDataPlanet(field: string): Observable<any>{
+    this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
+    return this.http.get(this.fieldUrl)
+  }
 }
