@@ -127,9 +127,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-    .personnelContainer{
 
-    }
 
     .Header{
         align-self: flex-start;
@@ -210,6 +208,7 @@
     .personnelList{
         align-self: flex-start;
         margin-left: 166px;
+        gap: 24px;
     }
     .personnelList li{
         width: 15px;
@@ -222,6 +221,6 @@
     }
     .image{
         height: 742px;   
-        margin-top: -44px; 
+        margin-top: -59px; 
     }
 }

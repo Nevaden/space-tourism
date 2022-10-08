@@ -16,12 +16,14 @@ export class PlanetComponent implements OnInit {
   id: any= null;
   image: any;
   backgrounditem: any;
+  found: boolean | undefined;
 
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
+    
     this.id = {
       name: this.route.snapshot.params['id'],   
     }

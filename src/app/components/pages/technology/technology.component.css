@@ -9,9 +9,54 @@
     min-width: 100%;
     min-height: 100%;
 }
+    .Header{
+        margin-top: 34px;
+        font-family: 'Barlow Condensed', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2.7px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+    }
+    .Header .HeaderNumber {
+        font-family: 'Barlow Condensed', sans-serif;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2.7px;
+        color: #FFFFFF;
+        mix-blend-mode: normal;
+        opacity: 0.25;
+    }
+
 
 @media only screen and (min-width: 1200px) {
     .background{
         background-image: url(../../../../assets/technology/background-technology-desktop.jpg);
+    }
+
+    .Header{
+        justify-content: flex-start;
+        margin-left: 166.5px;
+        margin-top: 76px;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+
+
+        letter-spacing: 4.725px;
+    }
+
+    .Header .HeaderNumber{
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 4.725px;
+        margin-right: 24px;
     }
 }

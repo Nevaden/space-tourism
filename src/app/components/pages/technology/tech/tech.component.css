@@ -1,12 +1,24 @@
+.section{
+    display: flex;
+    flex-direction: column;
+}
+
+.image{
+margin-top: 32px;
+}
 
 .textContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.techlList{
-    list-style: none;
     
+}
+
+
+.techlList{
+    margin-top: 34px;
+    list-style: none;
+    padding-left: 0px;
     display: flex;
 }
 
@@ -15,8 +27,7 @@
     width: 40px;
     background: none;
     mix-blend-mode: normal;
-    opacity: 0.25;
-    border: 1px solid #FFFFFF;
+    border: 1px solid hsla(0, 0%, 100%, 0.25);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -40,4 +51,112 @@
     text-align: center;
     
     color: #0B0D17!important;  
+}
+
+.terminology{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 2.3625px;
+    color: #D0D6F9;
+    height: 17px;
+    margin-top: 26px;
+}
+
+.name{
+    font-family: 'Bellefair', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    height: 28px;
+    margin-top: 9px;
+}
+
+.description{
+    font-family: 'Barlow', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: #D0D6F9;
+    margin-top: 16px;
+    margin-bottom: 56px;
+    width: 327px;
+    height: 175px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .section{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+    .textContainer{
+        flex-direction: row;
+        margin-left: 165px;
+    }
+    .techlList{
+        flex-direction: column;
+        gap: 32px;
+    }
+    .techlList li{
+        height: 80px;
+        width: 80px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 37px;
+        text-align: center;
+        letter-spacing: 2px;
+        
+    }
+    .techItems{
+        margin-left: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .terminology{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2.7px;
+        color: #D0D6F9;
+        height: 19px;
+    }
+
+    .name{
+        height: 64px;
+        margin-top: 11px;
+        margin-bottom: 17px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 56px;
+        line-height: 64px;
+        color: #FFFFFF;
+    }
+
+    .description{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 32px;
+        text-align: left;
+        color: #D0D6F9;
+        width: 444px;
+    }
+    
+    .image{
+        width: 515px;
+        height: 527px;
+    }
 }
