@@ -40,7 +40,6 @@ export class DestinationComponent implements OnInit {
 
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
-
         this.destination = {'destination': data};
         sessionStorage.setItem('destination',JSON.stringify(this.destination) );
         this.destination = sessionStorage.getItem('destination');

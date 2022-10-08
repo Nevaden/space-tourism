@@ -51,7 +51,7 @@ export class DataService {
         this.data = this.data[i];
       }
     }
-    console.log(this.data, 'the data')
+   
     return this.data;
   }
 }

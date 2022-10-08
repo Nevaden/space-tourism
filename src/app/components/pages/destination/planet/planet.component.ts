@@ -41,9 +41,13 @@ export class PlanetComponent implements OnInit {
     this.route.data.subscribe(
       (data: Data) => {
         this.planet = data['Planet']
+        console.log(this.planet, "all data in subscriber from resolver")
         for (let i = 0; i < this.planet.length; i++){
           if (this.planet[i].name.trim() == this.id.name.trim()) {
+            
             this.planet = this.planet[i]
+            console.log(this.planet, "we found it")
+            
           }
         }
       }
@@ -70,7 +74,7 @@ export class PlanetComponent implements OnInit {
   GetData(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
-        this.destination = {'destination': data};
+        this.destination = data;
         console.log(this.destination,"data")
         sessionStorage.setItem('destination',JSON.stringify(this.destination) );
         this.destination = sessionStorage.getItem('destination');
