@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -10,9 +11,13 @@ import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 })
 export class TechComponent implements OnInit {
   technology: any;
+  image: any;
 
   tech: any = {};
   id: any= null;
+  backgrounditem: any;
+  sessionTest: any;
+  
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -21,25 +26,32 @@ export class TechComponent implements OnInit {
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
-    this.GetData();
-
+    
     this.route.params.subscribe(
       (params: Params) => {
-        this.id.name = params['id']  
+        this.id.name = params['id']    
       }
     )
+  this.getResolver();
+  this.GetData();
 
-      this.route.data.subscribe(
+}
+
+
+  getResolver() {
+    this.route.data.subscribe(
       (data: Data) => {
         this.tech = data['Tech']
-        for (let i = 0; i < this.tech.length; i++){
-          if (this.tech[i].name.trim() == this.id.name.trim()) {
-            this.tech = this.tech[i]
+          for (let i = 0; i < this.tech.length; i++){
+            if (this.tech[i].name.trim() == this.id.name.trim()) {
+              this.tech = this.tech[i]
           }
         }
       }
-    );     
+    );  
   }
+
+
 
   GetData(){
     if(sessionStorage.getItem('technology')==null || sessionStorage.getItem('technology')==undefined) {
@@ -48,13 +60,35 @@ export class TechComponent implements OnInit {
         sessionStorage.setItem('technology',JSON.stringify(this.technology) )
         this.technology = sessionStorage.getItem('technology')
         this.technology =  JSON.parse(this.technology)
-        this.technology = this.technology.technology
       });
     } else{
       this.technology = sessionStorage.getItem('technology')
       this.technology =  JSON.parse(this.technology)
       this.technology = this.technology.technology
-      return true;
+      return this.technology;
     }
   }
+
+  UpdateBackground(){
+        if (window.innerWidth > 1199 ) {
+          return this.image = this.tech.images.portrait
+        } else {
+          return this.image = this.tech.images.landscape  
+        }  
+    }
+    
+  getImage(): Observable<string> {
+    this.backgrounditem = this.UpdateBackground()
+    return this.backgrounditem;
+  }
+
+  // getPageData(): Observable<string> {
+  //     this.sessionTest = sessionStorage.getItem('technology')
+  //     console.log("session test get",this.sessionTest)
+  //     this.sessionTest =  JSON.parse(this.sessionTest)
+  //     return of(this.sessionTest);
+  //   }
+
+
+
 }

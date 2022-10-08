@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-personnel',
@@ -11,6 +12,8 @@ export class PersonnelComponent implements OnInit {
   crew: any;
   person: any = {};
   id: any= null;
+  image: any;
+  backgrounditem: any;
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
     private router: Router) { }
@@ -56,5 +59,19 @@ export class PersonnelComponent implements OnInit {
       return true;
     }
   }
+
+  UpdateBackground(){
+    if (window.innerWidth > 1199 ) {
+      return this.image = this.person.images.webp
+    } else {
+      return this.image = this.person.images.png  
+    }  
+}
+
+getImage(): Observable<string> {
+this. backgrounditem = this.UpdateBackground()
+return this.backgrounditem;
+}
+
 
 }

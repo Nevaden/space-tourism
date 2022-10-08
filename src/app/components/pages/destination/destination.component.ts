@@ -18,12 +18,11 @@ export class DestinationComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
-
-    this.GetData();
-
     this.id = this.router.url.split("/")
     this.id = this.id[this.id.length-1]
+    this.GetData();
+
+
 
 
     for (let i = 0; i < this.destination.length; i++){
@@ -48,19 +47,32 @@ export class DestinationComponent implements OnInit {
         this.destination =  JSON.parse(this.destination);
         this.destination = this.destination.destination;
         if (!this.found || this.id == undefined ){
-          this.router.navigate(['/destination', this.destination[0].name]) 
+          this.matchPage();
         } 
       });
     } else{
-
       this.destination = sessionStorage.getItem('destination');
       this.destination =  JSON.parse(this.destination);
       this.destination = this.destination.destination;
     }
     if (!this.found || this.id == undefined ){
-      this.router.navigate(['/destination', this.destination[0].name]) 
+      this.matchPage();
     } 
     return true;
+  }
+
+  matchPage(){
+    for (let i = 0; i < this.destination.length; i++){
+      if (this.id == this.destination[i].name ){
+        this.router.navigate(['/destination', this.destination[i].name]) 
+        this.found = true;
+        break;
+      } 
+    }
+    if (!this.found){
+      this.router.navigate(['/destination', this.destination[0].name]) 
+    }
+    ;
   }
 
 }

@@ -30,6 +30,14 @@ export class DataService {
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
     return this.http.get(this.fieldUrl)
   }
+
+  getDataDirect(field: string) {
+    this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
+    this.data = this.http.get(this.fieldUrl);
+    console.log("did we do this?", this.data)
+    return this.data;
+  }
+
   getDataPlanet(field: string, subPage: string): Observable<any>{
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
     this.data = this.http.get(this.fieldUrl)

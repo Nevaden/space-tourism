@@ -15,5 +15,5 @@
     </article>
 
 
-    <img src={{person.images.png}} alt="personnel photo">
+    <img (window:resize)="getImage()" [src]="getImage()" alt="personnel photo">
 </section>

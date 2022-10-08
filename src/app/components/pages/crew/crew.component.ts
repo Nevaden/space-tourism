@@ -16,18 +16,21 @@ export class CrewComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.GetData();
     this.id = this.router.url.split("/")
     this.id = this.id[this.id.length-1]
+    this.GetData();
 
 
-    for (let i = 0; i < this.crew.length; i++){
-      if (this.id == this.crew[i].name ){
-        this.router.navigate(['/destination', this.crew[i].name]) 
-        this.found = true;
-        break;
-      } 
-    };
+
+    // for (let i = 0; i < this.crew.length; i++){
+    //   console.log(this.id.replace(/%20/g, " ").trim() , this.crew[i].name.trim())
+    //   if (this.id == this.crew[i].name ){
+    //     console.log("routing to", '/destination'+ this.crew[i].name)
+    //     this.router.navigate(['/destination', this.crew[i].name]) 
+    //     this.found = true;
+    //     break;
+    //   } 
+    // };
   }
 
   GetData(){
@@ -39,7 +42,7 @@ export class CrewComponent implements OnInit {
         this.crew =  JSON.parse(this.crew)
         this.crew = this.crew.crew
         if (!this.found || this.id == undefined ){
-          this.router.navigate(['/crew', this.crew[0].name]) 
+          this.matchPage();
         }        
       });
     } else{
@@ -47,10 +50,23 @@ export class CrewComponent implements OnInit {
       this.crew =  JSON.parse(this.crew)
       this.crew = this.crew.crew
       if (!this.found || this.id == undefined ){
-        this.router.navigate(['/crew', this.crew[0].name]) 
+        this.matchPage();
       }   
       return true;
     }
   }
 
+  matchPage(){
+    for (let i = 0; i < this.crew.length; i++){
+      if (this.id == this.crew[i].name.replace( " ", '%20') ){
+        this.router.navigate(['/crew', this.crew[i].name]) 
+        this.found = true;
+        break;
+      } 
+    }
+    if (!this.found){
+      this.router.navigate(['/crew', this.crew[0].name]) 
+    }
+    ;
+  }
 }

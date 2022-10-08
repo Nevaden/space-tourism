@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,6 +14,8 @@ export class PlanetComponent implements OnInit {
   planets: any = [];
   planet: any = {};
   id: any= null;
+  image: any;
+  backgrounditem: any;
 
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
@@ -80,6 +83,21 @@ export class PlanetComponent implements OnInit {
       return true;
     }
   }
+
+
+  UpdateBackground(){
+    if (window.innerWidth > 1199 ) {
+      return this.image = this.planet.images.webp
+    } else {
+      return this.image = this.planet.images.png
+    }  
+}
+
+getImage(): Observable<string> {
+this.backgrounditem = this.UpdateBackground()
+return this.backgrounditem;
+}
+
 
 
 }
