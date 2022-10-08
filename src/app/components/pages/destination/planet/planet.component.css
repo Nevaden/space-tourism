@@ -43,6 +43,7 @@
 .Active{
     border-bottom: 0.2rem solid #FFF;
     color: #FFFFFF !important;
+    pointer-events: none;
 } 
 
 .name{
