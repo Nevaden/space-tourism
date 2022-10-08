@@ -1,19 +1,21 @@
-<h5 class="Header"><p class="headerNumber">02</p>MEET YOUR CREW</h5>
+<section class="personnelContainer">
+    <h5 class="Header"><p class="headerNumber">02</p>MEET YOUR CREW</h5>
 
-<section class="personnelSection">
-    <article class="personnelText">
+    <section class="personnelSection">
+        <article class="personnelText">
 
-        <div class="textContainer">
-            <p class="role">{{person.role}}</p>
-            <p class="name">{{person.name}}</p>
-            <p class="bio">{{person.bio}}</p>
+            <div class="textContainer">
+                <p class="role">{{person.role}}</p>
+                <p class="name">{{person.name}}</p>
+                <p class="bio">{{person.bio}}</p>
+            </div>
+
+        <ul class="personnelList">
+            <li *ngFor="let listItem of crew" id={{listItem.name}} [routerLink]="['/crew',listItem.name]" routerLinkActive="Active"></li>
+        </ul>  
+        </article>
+        <div class="imageContainer">
+            <img class="image" (window:resize)="getImage()" [src]="getImage()" alt="personnel photo">
         </div>
-
-    <ul class="personnelList">
-        <li *ngFor="let listItem of crew" id={{listItem.name}} [routerLink]="['/crew',listItem.name]"></li>
-    </ul>  
-    </article>
-
-
-    <img (window:resize)="getImage()" [src]="getImage()" alt="personnel photo">
+    </section>
 </section>

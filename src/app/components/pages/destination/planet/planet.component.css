@@ -1,17 +1,191 @@
+.sectionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-
+.image{
+    height: 170px;
+    width: 170px;
+    margin-top: 32px;
+}
 
 .planetList{
     list-style: none;
     display: flex;
+    padding: 0;
+    height: 28px;
+    justify-content: center;
     gap: 26px;
-    margin-left: 200px;
-    font-size: 30px;
-    color: #FFF
+    margin-top: 26px;
+    height: 28px;
 }
 
-.testing{
-    font-size: 30px;
-    margin-left: 200px;
-    color: #FFF
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.planetList li{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 2.3625px;
+    color: #D0D6F9;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+
+.Active{
+    border-bottom: 0.2rem solid #FFF;
+    color: #FFFFFF !important;
+} 
+
+.name{
+    margin-top: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 56px;
+    line-height: 64px;
+    text-align: center;
+    font-family: 'Bellefair', serif;
+    color: #FFFFFF;
+    height: 64px;
+    width: 187px;
+}
+
+.description{
+    font-family: 'Barlow', sans-serif;   
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: #D0D6F9;
+    height: 125px;
+    width: 327px;
+}
+.spacingLine{
+    background: #383B4B;
+    height: 1px;
+    width: 327px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.distanceContainer, .travelContainer {
+    height: 61px;
+    width: 216px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.distanceHeader, .travelHeader{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 2.3625px;
+    text-transform: uppercase;
+    color: #D0D6F9;
+    
+}
+
+.distance, .travel{
+    font-family: 'Bellefair', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;   
+    margin-top: 12px; 
+}
+
+.travelContainer{
+    margin-top: 32px;
+    margin-bottom: 58px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .sectionContainer{
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .image{
+        height: 445px;
+        width: 445px;
+    }
+    .textContainer{
+        align-items: flex-start;
+    }
+
+    .planetList li{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        letter-spacing: 2.7px;
+    }
+
+    .name{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 100px;
+        line-height: 115px;
+        color: #FFFFFF;     
+        height: 115px;
+
+    }
+
+    .description{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 32px;
+        color: #D0D6F9;     
+        text-align: left;   
+        height: 128px;
+        width: 444px;
+    }
+
+    .spacingLine{
+        margin-top: 54px;
+        margin-bottom: 28px;
+    }
+
+    .statsContainer{
+        display: flex;
+  
+    }
+    .distanceContainer, .travelContainer {
+        align-items: flex-start;
+    }
+
+    .distanceHeader, .travelHeader{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 2.3625px;
+        text-transform: uppercase;
+        color: #D0D6F9;
+    }
+
+    .distance, .travel{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 32px;
+        color: #FFFFFF;    
+    }
+
+
+    .travelContainer{
+        margin-top: 0;
+    }
 }

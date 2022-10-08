@@ -1,14 +1,24 @@
 
 
+<section class="sectionContainer">
+    <img class="image" (window:resize)="getImage()" [src]="getImage()" alt="">
+    <article class="textContainer">
+        <ul class="planetList" >
+            <li *ngFor="let listItem of destination" id={{listItem.name}} [routerLink]="['/destination',listItem.name]" routerLinkActive="Active">{{listItem.name | uppercase}}</li>
+        </ul>
 
-<img (window:resize)="getImage()" [src]="getImage()" alt="">
-
-<ul class="planetList" >
-    <li *ngFor="let listItem of destination" id={{listItem.name}} [routerLink]="['/destination',listItem.name]" >{{listItem.name | uppercase}}</li>
-</ul>
-
-<h2>{{planet.name | uppercase}}</h2>
-<p>{{planet.description}}</p>
-<hr>
-<p>{{planet.distance}}</p>
-<p>{{planet.travel}}</p>
+        <h2 class="name">{{planet.name | uppercase}}</h2>
+        <p class="description">{{planet.description}}</p>
+        <div class="spacingLine"></div>
+        <div class="statsContainer">
+            <div class="distanceContainer">
+                <p class="distanceHeader">AVG. DISTANCE</p>
+                <p class="distance">{{planet.distance}}</p>
+            </div>
+            <div class="travelContainer">
+                <p class="travelHeader">Est. travel time</p>
+                <p class="travel">{{planet.travel}}</p>
+            </div>
+        </div>
+    </article>
+</section>

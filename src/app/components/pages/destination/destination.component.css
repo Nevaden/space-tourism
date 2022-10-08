@@ -53,4 +53,27 @@
     .background{
         background-image: url(../../../../assets/destination/background-destination-desktop.jpg);
     }
+    
+    .Header{
+        margin-top: 76px;
+        justify-content: flex-start;
+        margin-left: 165.5px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 4.725px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .Header p{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 4.725px;
+        mix-blend-mode: normal;
+        opacity: 0.25;
+    }
 }

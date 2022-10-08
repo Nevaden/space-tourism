@@ -1,9 +1,227 @@
+.personnelContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Header{
+    display: flex;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+    text-transform: uppercase;
+    margin-top: 34px;
+    color: #FFFFFF;
+}
+
+.Header p{
+    font-family: 'Barlow Condensed', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 2.7px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.25;  
+    margin-right: 16px;
+}
 
 
+.personnelSection{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center
+}
+
+.personnelText{
+    display: flex;
+    flex-direction: column-reverse;
+}
 
 .personnelList{
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 26px;
+    gap: 16px;
+    padding-left: 0px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    list-style: none;
+}
+
+.personnelList li{
+    background: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.17;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.Active{
+    background: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+.imageContainer{
+    display: flex;
+    justify-content: center;
+    width: 327px;
+    border-bottom: 3px solid #383B4B;
+}
+
+.image{
+    height: 222px;
+    
+    margin-top: 32px;
+}
+.textContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.role{
+    font-family: 'Bellefair', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+    margin-top: 32px;
+    height: 18px;
+}
+
+.name{
+    font-family: 'Bellefair', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    height: 28px;
+    margin-top: 8px;
+}
+
+.bio{
+    height: 100px;
+    width: 327px;
+    font-family: 'Barlow', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
+    color: #D0D6F9; 
+    margin-top: 16px;
+    margin-bottom: 104px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .personnelContainer{
+
+    }
+
+    .Header{
+        align-self: flex-start;
+        margin-left: 166.5px;
+        margin-top: 76px;
+  
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 4.725px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .Header p{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 34px;
+        letter-spacing: 4.725px;
+        color: #FFFFFF;
+        mix-blend-mode: normal;
+        opacity: 0.25;
+    }
+
+    .personnelSection{
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        justify-content: space-between;
+    }
+    .personnelText{
+        flex-direction: column;
+    }
+    .textContainer{
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 166px;
+    }
+
+    .role, .name, .bio{
+        text-align: left;
+    }
+    .role{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 37px;
+        color: #FFFFFF;
+        mix-blend-mode: normal;
+        opacity: 0.5;
+        height: 37px;
+    }
+
+    .name{
+        margin-top: 15px;
+        margin-bottom: 27px;
+        height: 64px;
+        font-weight: 400;
+        font-size: 56px;
+        line-height: 64px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+    }
+
+    .bio{
+        width: 444px;
+        height: 128px;
+        font-family: 'Barlow';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 32px;
+        color: #D0D6F9;
+    }
+
+    .personnelList{
+        align-self: flex-start;
+        margin-left: 166px;
+    }
+    .personnelList li{
+        width: 15px;
+        height: 15px;
+    }
+
+    .imageContainer{
+        width: 568px;
+        margin-right: 137px;
+    }
+    .image{
+        height: 742px;   
+        margin-top: -44px; 
+    }
 }
