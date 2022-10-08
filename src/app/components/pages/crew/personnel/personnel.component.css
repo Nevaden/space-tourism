@@ -222,10 +222,12 @@
     .imageContainer{
         width: 568px;
         margin-right: 137px;
+        border: none;
     }
     .image{
         height: 742px;   
         margin-top: -59px; 
     }
+
 }
 
