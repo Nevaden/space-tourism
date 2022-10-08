@@ -22,25 +22,29 @@ export class PersonnelComponent implements OnInit {
    this.id = {
       name: this.route.snapshot.params['id'],   
     }
-    this.GetData();
-
+    // this.GetData();
+    this.getResolverData();
     this.route.params.subscribe(
       (params: Params) => {
         this.id.name = params['id']  
       }
     )
 
-      this.route.data.subscribe(
+
+    
+  }
+
+  getResolverData(){
+    this.route.data.subscribe(
       (data: Data) => {
-        this.person = data['Person']
-        for (let i = 0; i < this.person.length; i++){
-          if (this.person[i].name.trim() == this.id.name.trim()) {
-            this.person = this.person[i]
+        this.crew = data['Person']
+        for (let i = 0; i < this.crew.length; i++){
+          if (this.crew[i].name.trim() == this.id.name.trim()) {
+            this.person = this.crew[i]
           }
         }
       }
     );  
-    
   }
 
   GetData(){

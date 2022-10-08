@@ -26,7 +26,7 @@ export class PlanetComponent implements OnInit {
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
-    this.GetData();
+    // this.GetData();
 
     
     this.route.params.subscribe(
@@ -35,20 +35,23 @@ export class PlanetComponent implements OnInit {
       }
     )
 
+      this.getResolverData();
 
+
+  }
+
+  getResolverData(){
     this.route.data.subscribe(
       (data: Data) => {
-        this.planet = data['Planet']
-        for (let i = 0; i < this.planet.length; i++){
-          if (this.planet[i].name.trim() == this.id.name.trim()) {
-            this.planet = this.planet[i] 
+        this.planets = data['Planet']
+        for (let i = 0; i < this.planets.length; i++){
+          if (this.planets[i].name.trim() == this.id.name.trim()) {
+            this.planet = this.planets[i] 
           }
         }
       }
     );
-
   }
-
 
   GetSessionData(){
     this.dataService.getSessionData("destination",this.id.name).subscribe((data) => {

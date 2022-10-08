@@ -33,7 +33,7 @@ export class TechComponent implements OnInit {
       }
     )
   this.getResolver();
-  this.GetData();
+  // this.GetData();
 
 }
 
@@ -41,10 +41,10 @@ export class TechComponent implements OnInit {
   getResolver() {
     this.route.data.subscribe(
       (data: Data) => {
-        this.tech = data['Tech']
-          for (let i = 0; i < this.tech.length; i++){
-            if (this.tech[i].name.trim() == this.id.name.trim()) {
-              this.tech = this.tech[i]
+        this.technology = data['Tech']
+          for (let i = 0; i < this.technology.length; i++){
+            if (this.technology[i].name.trim() == this.id.name.trim()) {
+              this.tech = this.technology[i]
           }
         }
       }
