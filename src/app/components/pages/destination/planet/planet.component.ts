@@ -23,7 +23,6 @@ export class PlanetComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log("drink some juice")
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
@@ -40,11 +39,9 @@ export class PlanetComponent implements OnInit {
     this.route.data.subscribe(
       (data: Data) => {
         this.planet = data['Planet']
-        console.log("all planets",this.planet)
         for (let i = 0; i < this.planet.length; i++){
           if (this.planet[i].name.trim() == this.id.name.trim()) {
             this.planet = this.planet[i] 
-            console.log(this.planet ,"this is the current planet")
           }
         }
       }

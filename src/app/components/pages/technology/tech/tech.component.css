@@ -116,7 +116,9 @@ margin-top: 32px;
         line-height: 37px;
         text-align: center;
         letter-spacing: 2px;
-        
+    }
+    .techlList li:hover{
+        border: 1px solid #FFFFFF;
     }
     .techItems{
         margin-left: 80px;

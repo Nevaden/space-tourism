@@ -53,9 +53,9 @@
 }
 
 .personnelList li{
-    background: #FFFFFF;
+    background: hsla(0, 0%, 100%, 0.17);
     mix-blend-mode: normal;
-    opacity: 0.17;
+
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -215,6 +215,9 @@
         height: 15px;
         cursor: pointer;
     }
+    .personnelList li:hover{
+        background: hsla(0, 0%, 100%, 0.50);
+    }
 
     .imageContainer{
         width: 568px;
@@ -225,3 +228,4 @@
         margin-top: -59px; 
     }
 }
+
