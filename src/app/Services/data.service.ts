@@ -34,40 +34,13 @@ export class DataService {
     return this.http.get(this.fieldUrl)
   }
 
-  getDataDirect(field: string) {
-    this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
-    this.data = this.http.get(this.fieldUrl);
-    this.data = JSON.parse(this.data)
-    return this.data;
-  }
-
-  async getDataPlanet(field: string, subPage: string){
-    // this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
-    // this.data = this.http.get(this.fieldUrl)
-    
+  getDataPage(field: string, subPage: string){ 
     this.test = sessionStorage.getItem(field)
     this.test = JSON.parse(this.test)
     return this.test
   }
 
-  getSessionData(page: string, subPage: string): Observable<any>{
-    this.data = sessionStorage.getItem('destination');
-    if(typeof this.data=='string' ||typeof this.data==undefined){
-      this.parsedData = JSON.parse(this.data)
-      return of(this.parsedData)
-    } else{
-      this.getData(page);
-      this.parsedData = JSON.parse(this.data!) 
-    return this.parsedData;
-
-    }
-  }
    
-    // for (let i = 0; i < this.data.length; i++){
-    //   if(this.data[i].name.trim() == subPage.trim()){
-        
-    //     this.data = this.data[i];
-    //   }
-    // }
+
 }
   
