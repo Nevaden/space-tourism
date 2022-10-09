@@ -74,11 +74,10 @@ export class PlanetComponent implements OnInit {
     }
   }
   InitialLoad(){
-    console.log("yes?")
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
         this.firstLoad();
-      }, 200);
+      }, 1000);
     }
   }
 

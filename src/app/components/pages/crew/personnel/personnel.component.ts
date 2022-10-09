@@ -71,7 +71,7 @@ export class PersonnelComponent implements OnInit {
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
         this.firstLoad();
-      }, 200);
+      }, 1000);
     }
   }
 

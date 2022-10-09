@@ -66,8 +66,7 @@ export class TechComponent implements OnInit {
   firstLoad(){
     this.technology =  sessionStorage.getItem('destination')
     this.technology = JSON.parse(this.technology)
- 
-   
+    console.log(this.technology,"techno")
     for (let i = 0; i < this.technology.length; i++){
       if (this.technology[i].name.trim() == this.id.name.trim()) {
        
@@ -78,8 +77,9 @@ export class TechComponent implements OnInit {
   InitialLoad(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
+        console.log("wait ahain")
         this.firstLoad();
-      }, 200);
+      }, 1000);
     }
   } 
 
