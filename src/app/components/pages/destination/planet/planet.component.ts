@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/Services/data.service';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -34,8 +34,10 @@ export class PlanetComponent implements OnInit {
         this.id.name = params['id']  
       }
     )
+    this.GetData();
+    this.GetSessionData();
+      // this.getResolverData();
 
-      this.getResolverData();
 
 
   }
@@ -53,17 +55,31 @@ export class PlanetComponent implements OnInit {
     );
   }
 
-  GetSessionData(){
-    this.dataService.getSessionData("destination",this.id.name).subscribe((data) => {
-      this.planet = data;
-      console.log(this.planet, "data session")
-      for (let i = 0; i < this.planet.length; i++){
-        if (this.planet[i].name.trim() == this.id.name.trim()) {
-          this.planet = this.planet[i]
-        }
-      }    
-    })
+
+
+  GetSessionData() {
+   
+    for (let i = 0; i < this.destination.length; i++){
+      if (this.destination[i].name.trim() == this.id.name.trim()) {
+        return this.planet = this.destination[i]
+      }
+ } 
+   
   }
+//    get current page loop
+//   for (let i = 0; i < this.destination.length; i++){
+//     if (this.destination[i].name.trim() == this.id.name.trim()) {
+//       return this.planet = this.destination[i]
+//     }
+//  } 
+
+  // getImage(): Observable<string> {
+  //   this.backgrounditem = this.UpdateBackground()
+  //   return this.backgrounditem;
+  //   }
+
+
+  
   
   GetData(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
@@ -72,15 +88,19 @@ export class PlanetComponent implements OnInit {
         console.log(this.destination,"data")
         sessionStorage.setItem('destination',JSON.stringify(this.destination) );
         this.destination = sessionStorage.getItem('destination');
-        this.destination =  JSON.parse(this.destination);
-        this.destination = this.destination.destination;
-
+        this.destination =  JSON.parse(this.destination);;
+        console.log(this.destination,"me")
+        for (let i = 0; i < this.destination.length; i++){
+          this.destination[i] = this.destination[i].name
+        }
+       
       });
     } else{
       this.destination = sessionStorage.getItem('destination');
-      this.destination =  JSON.parse(this.destination);
-      this.destination = this.destination.destination;
-      return true;
+      this.destination =  JSON.parse(this.destination);;
+ 
+      this.destination = this.destination.destination
+      return this.destination
     }
   }
 

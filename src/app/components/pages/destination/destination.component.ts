@@ -69,6 +69,7 @@ export class DestinationComponent implements OnInit {
       } 
     }
     if (!this.found){
+      console.log(this.destination[0].name)
       this.router.navigate(['/destination', this.destination[0].name]) 
     }
     ;
