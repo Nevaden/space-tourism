@@ -59,14 +59,15 @@ export class PlanetComponent implements OnInit {
 
   GetSessionData() {
     return this.dataService.getSessionData('destination',"").subscribe((data: any) =>{
-      
+
       this.destination = data;
-      console.log(this.destination,"yayasdasd tests")
-      this.destination = this.destination.destination
-      console.log(this.destination,"yay tests")
 
       for (let i = 0; i < this.destination.length; i++){
-        this.destination[i] = this.destination[i].name
+        console.log(this.destination[i].name.trim(), this.id.name.trim(),"comparison")
+        if (this.destination[i].name.trim() == this.id.name.trim()) {
+          console.log("check")
+          return this.planet = this.destination[i]; 
+        }
       }
     });
   
@@ -90,11 +91,9 @@ export class PlanetComponent implements OnInit {
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
         this.destination = data;
-        console.log(this.destination,"data")
         sessionStorage.setItem('destination',JSON.stringify(this.destination) );
         this.destination = sessionStorage.getItem('destination');
         this.destination =  JSON.parse(this.destination);;
-        console.log(this.destination,"me")
         for (let i = 0; i < this.destination.length; i++){
           this.destination[i] = this.destination[i].name
         }

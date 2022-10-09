@@ -10,6 +10,8 @@ import { DataService } from 'src/app/Services/data.service';
 export class DestinationComponent implements OnInit {
   destination: any;
   id: any;
+  data: any;
+  storeObject: object = {};
   found: boolean | undefined = false;
 
   constructor(private dataService: DataService,
@@ -25,13 +27,13 @@ export class DestinationComponent implements OnInit {
 
 
 
-    for (let i = 0; i < this.destination.length; i++){
-      if (this.id == this.destination[i].name ){
-        this.router.navigate(['/destination', this.destination[i].name]) 
-        this.found = true;
-        break;
-      } 
-    };
+    // for (let i = 0; i < this.destination.length; i++){
+    //   if (this.id == this.destination[i].name ){
+    //     this.router.navigate(['/destination', this.destination[i].name]) 
+    //     this.found = true;
+    //     break;
+    //   } 
+    // };
   }
 
 
@@ -40,12 +42,12 @@ export class DestinationComponent implements OnInit {
 
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
+
         this.destination = {'destination': data};
-        sessionStorage.setItem('destination',JSON.stringify(this.destination) );
+        sessionStorage.setItem('destination',JSON.stringify(this.destination.destination) );
         this.destination = sessionStorage.getItem('destination');
         this.destination =  JSON.parse(this.destination);
-        this.destination = this.destination.destination;
-        
+    
         if (!this.found || this.id == undefined ){
           this.matchPage();
         } 
@@ -53,8 +55,6 @@ export class DestinationComponent implements OnInit {
     } else{
       this.destination = sessionStorage.getItem('destination');
       this.destination =  JSON.parse(this.destination);
-      this.destination = this.destination.destination;
-     
     }
     if (!this.found || this.id == undefined ){
       this.matchPage();

@@ -15,6 +15,7 @@ export class DataService {
   url = `${this.firebaseURL}${this.jsonEXT}`
   page: any;
   data: any;
+  parsedData: any;
   // urlCrew = `${this.firebaseURL}${this.crew}${this.jsonEXT}`
   // urlTechnology = `${this.firebaseURL}${this.technology}${this.jsonEXT}`
   // urlDestination = `${this.firebaseURL}${this.destination}${this.jsonEXT}`
@@ -46,20 +47,21 @@ export class DataService {
 
   getSessionData(page: string, subPage: string): Observable<any>{
     this.data = sessionStorage.getItem('destination');
-    console.log(this.data,"unaltered data")
-    if(typeof sessionStorage.getItem('destination')=='string' ||typeof sessionStorage.getItem('destination')==undefined){
-      console.log(this.data,"UNparsed data, if sessionitem existrs")
-      this.data = JSON.parse(this.data)
-      console.log(this.data[page],"parsed data, if sessionitem existrs")
-      return of(this.data,"after parse")
+
+    if(typeof this.data=='string' ||typeof this.data==undefined){
+      this.parsedData = JSON.parse(this.data)
+      console.log(this.parsedData,"bacon")
+
+      return of(this.parsedData)
     } else{
       
       this.getData(page);
-      this.data = JSON.parse(sessionStorage.getItem('destination')!)
-      console.log(this.data,"errr")  
+      this.parsedData = JSON.parse(this.data!)
+      console.log(this.parsedData)  
     return this.data;
 
     }
+  }
    
     // for (let i = 0; i < this.data.length; i++){
     //   if(this.data[i].name.trim() == subPage.trim()){
@@ -67,6 +69,5 @@ export class DataService {
     //     this.data = this.data[i];
     //   }
     // }
-  
-  }
 }
+  
