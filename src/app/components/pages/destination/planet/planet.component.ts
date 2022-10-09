@@ -18,9 +18,7 @@ export class PlanetComponent implements OnInit {
   backgrounditem: any;
   found: boolean | undefined;
 
-  constructor(private dataService: DataService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = {
@@ -33,6 +31,7 @@ export class PlanetComponent implements OnInit {
     )
       this.getResolverData();
       this.InitialLoad();
+      
   }
 
 
@@ -43,6 +42,7 @@ export class PlanetComponent implements OnInit {
         for (let i = 0; i < this.planets.length; i++){
           if (this.planets[i].name.trim() == this.id.name.trim()) {
             this.planet = this.planets[i] 
+            
           }
         }
       }
@@ -66,8 +66,6 @@ export class PlanetComponent implements OnInit {
   firstLoad(){
     this.planets =  sessionStorage.getItem('destination')
     this.planets = JSON.parse(this.planets)
-
-   
     for (let i = 0; i < this.planets.length; i++){
       if (this.planets[i].name.trim() == this.id.name.trim()) {
        
@@ -76,10 +74,11 @@ export class PlanetComponent implements OnInit {
     }
   }
   InitialLoad(){
+    console.log("yes?")
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
         this.firstLoad();
-      }, 150);
+      }, 200);
     }
   }
 

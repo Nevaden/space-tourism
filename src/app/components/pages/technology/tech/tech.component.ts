@@ -18,9 +18,7 @@ export class TechComponent implements OnInit {
   backgrounditem: any;
   sessionTest: any;
   
-  constructor(private dataService: DataService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {
 
@@ -36,7 +34,6 @@ export class TechComponent implements OnInit {
       
         this.getResolverData();
         this.InitialLoad();
-  
     }
 
 
@@ -46,16 +43,12 @@ export class TechComponent implements OnInit {
           this.technology = data['Tech']
           for (let i = 0; i < this.technology.length; i++){
             if (this.technology[i].name.trim() == this.id.name.trim()) {
-              this.tech = this.technology[i] 
+              this.tech = this.technology[i]  
             }
           }
         }
       );
     }
-
-
-
-
 
   UpdateBackground(){
         if (window.innerWidth > 1199 ) {
@@ -86,7 +79,7 @@ export class TechComponent implements OnInit {
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
         this.firstLoad();
-      }, 150);
+      }, 200);
     }
   } 
 

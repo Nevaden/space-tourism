@@ -14,9 +14,7 @@ export class PersonnelComponent implements OnInit {
   id: any= null;
   image: any;
   backgrounditem: any;
-  constructor(private dataService: DataService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {
       this.id = {
@@ -73,7 +71,7 @@ export class PersonnelComponent implements OnInit {
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
         this.firstLoad();
-      }, 150);
+      }, 200);
     }
   }
 
