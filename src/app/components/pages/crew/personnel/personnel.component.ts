@@ -18,21 +18,18 @@ export class PersonnelComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) { }
 
-  ngOnInit(): void {
-   this.id = {
-      name: this.route.snapshot.params['id'],   
-    }
-    // this.GetData();
-    this.getResolverData();
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id.name = params['id']  
+    ngOnInit(): void {
+      this.id = {
+        name: this.route.snapshot.params['id'],   
       }
-    )
-
-
-    
-  }
+      this.route.params.subscribe(
+        (params: Params) => {
+          this.id.name = params['id']  
+        }
+      )
+        this.getResolverData();
+        this.InitialLoad();
+    }
 
   getResolverData(){
     this.route.data.subscribe(
@@ -47,35 +44,40 @@ export class PersonnelComponent implements OnInit {
     );  
   }
 
-  GetData(){
-    if(sessionStorage.getItem('crew')==null || sessionStorage.getItem('crew')==undefined) {
-      return this.dataService.getData('crew').subscribe((data) =>{
-        this.crew = {'crew': data}
-        sessionStorage.setItem('crew',JSON.stringify(this.crew) )
-        this.crew = sessionStorage.getItem('crew')
-        this.crew =  JSON.parse(this.crew)
-        this.crew = this.crew.crew
-      });
-    } else{
-      this.crew = sessionStorage.getItem('crew')
-      this.crew =  JSON.parse(this.crew)
-      this.crew = this.crew.crew
-      return true;
-    }
-  }
-
   UpdateBackground(){
     if (window.innerWidth > 1199 ) {
       return this.image = this.person.images.webp
     } else {
       return this.image = this.person.images.png  
     }  
-}
+  }
 
-getImage(): Observable<string> {
-this. backgrounditem = this.UpdateBackground()
-return this.backgrounditem;
-}
+  getImage(): Observable<string> {
+    this. backgrounditem = this.UpdateBackground()
+    return this.backgrounditem;
+  }
+
+  firstLoad(){
+    this.crew =  sessionStorage.getItem('crew')
+    this.crew = JSON.parse(this.crew)
+
+   
+    for (let i = 0; i < this.crew.length; i++){
+      if (this.crew[i].name.trim() == this.id.name.trim()) {
+       
+        this.person = this.crew[i] 
+      }
+    }
+  }
+  InitialLoad(){
+    if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
+      setTimeout(() => {
+        this.firstLoad();
+      }, 150);
+    }
+  }
+
+
 
 
 }

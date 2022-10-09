@@ -16,6 +16,7 @@ export class DataService {
   page: any;
   data: any;
   parsedData: any;
+  test: any ;
   // urlCrew = `${this.firebaseURL}${this.crew}${this.jsonEXT}`
   // urlTechnology = `${this.firebaseURL}${this.technology}${this.jsonEXT}`
   // urlDestination = `${this.firebaseURL}${this.destination}${this.jsonEXT}`
@@ -29,36 +30,35 @@ export class DataService {
 
   getData(field: string): Observable<any>{
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
+    console.log("server access")
     return this.http.get(this.fieldUrl)
   }
 
   getDataDirect(field: string) {
     this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
     this.data = this.http.get(this.fieldUrl);
-    console.log("did we do this?", this.data)
+    this.data = JSON.parse(this.data)
     return this.data;
   }
 
-  getDataPlanet(field: string, subPage: string): Observable<any>{
-    this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
-    this.data = this.http.get(this.fieldUrl)
-    return this.http.get(this.fieldUrl)
+  async getDataPlanet(field: string, subPage: string){
+    // this.fieldUrl = `${this.firebaseURL}${field}${this.jsonEXT}`
+    // this.data = this.http.get(this.fieldUrl)
+    
+    this.test = sessionStorage.getItem(field)
+    this.test = JSON.parse(this.test)
+    return this.test
   }
 
   getSessionData(page: string, subPage: string): Observable<any>{
     this.data = sessionStorage.getItem('destination');
-
     if(typeof this.data=='string' ||typeof this.data==undefined){
       this.parsedData = JSON.parse(this.data)
-      console.log(this.parsedData,"bacon")
-
       return of(this.parsedData)
     } else{
-      
       this.getData(page);
-      this.parsedData = JSON.parse(this.data!)
-      console.log(this.parsedData)  
-    return this.data;
+      this.parsedData = JSON.parse(this.data!) 
+    return this.parsedData;
 
     }
   }

@@ -19,41 +19,27 @@ export class CrewComponent implements OnInit {
     this.id = this.router.url.split("/")
     this.id = this.id[this.id.length-1]
     this.GetData();
-
-
-
-    // for (let i = 0; i < this.crew.length; i++){
-    //   console.log(this.id.replace(/%20/g, " ").trim() , this.crew[i].name.trim())
-    //   if (this.id == this.crew[i].name ){
-    //     console.log("routing to", '/destination'+ this.crew[i].name)
-    //     this.router.navigate(['/destination', this.crew[i].name]) 
-    //     this.found = true;
-    //     break;
-    //   } 
-    // };
   }
 
   GetData(){
     if(sessionStorage.getItem('crew')==null || sessionStorage.getItem('crew')==undefined) {
       return this.dataService.getData('crew').subscribe((data) =>{
-        this.crew = {'crew': data}
-        sessionStorage.setItem('crew',JSON.stringify(this.crew) )
-        this.crew = sessionStorage.getItem('crew')
-        this.crew =  JSON.parse(this.crew)
-        this.crew = this.crew.crew
+        this.crew = {"crew":data};
+        sessionStorage.setItem('crew',JSON.stringify(this.crew.crew) );
+        this.crew = sessionStorage.getItem('crew');
+        this.crew =  JSON.parse(this.crew);
         if (!this.found || this.id == undefined ){
           this.matchPage();
-        }        
+        } 
       });
     } else{
-      this.crew = sessionStorage.getItem('crew')
-      this.crew =  JSON.parse(this.crew)
-      this.crew = this.crew.crew
-      if (!this.found || this.id == undefined ){
-        this.matchPage();
-      }   
-      return true;
+      this.crew = sessionStorage.getItem('crew');
+      this.crew =  JSON.parse(this.crew);
     }
+    if (!this.found || this.id == undefined ){
+      this.matchPage();
+    } 
+    return true;
   }
 
   matchPage(){

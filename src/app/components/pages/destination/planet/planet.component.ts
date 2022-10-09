@@ -26,23 +26,17 @@ export class PlanetComponent implements OnInit {
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
-    // this.GetData();
-
-    
     this.route.params.subscribe(
       (params: Params) => {
         this.id.name = params['id']  
       }
     )
-    // this.GetData();
-    this.GetSessionData();
-      // this.getResolverData();
-
-
-
+      this.getResolverData();
+      this.InitialLoad();
   }
 
-  getResolverData(){
+
+   getResolverData(){
     this.route.data.subscribe(
       (data: Data) => {
         this.planets = data['Planet']
@@ -56,73 +50,38 @@ export class PlanetComponent implements OnInit {
   }
 
 
-
-  GetSessionData() {
-    return this.dataService.getSessionData('destination',"").subscribe((data: any) =>{
-
-      this.destination = data;
-
-      for (let i = 0; i < this.destination.length; i++){
-        console.log(this.destination[i].name.trim(), this.id.name.trim(),"comparison")
-        if (this.destination[i].name.trim() == this.id.name.trim()) {
-          console.log("check")
-          return this.planet = this.destination[i]; 
-        }
-      }
-    });
-  
-  }
-//    get current page loop
-//   for (let i = 0; i < this.destination.length; i++){
-//     if (this.destination[i].name.trim() == this.id.name.trim()) {
-//       return this.planet = this.destination[i]
-//     }
-//  } 
-
-  // getImage(): Observable<string> {
-  //   this.backgrounditem = this.UpdateBackground()
-  //   return this.backgrounditem;
-  //   }
-
-
-  
-  
-  GetData(){
-    if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
-      return this.dataService.getData('destination').subscribe((data) =>{
-        this.destination = data;
-        sessionStorage.setItem('destination',JSON.stringify(this.destination) );
-        this.destination = sessionStorage.getItem('destination');
-        this.destination =  JSON.parse(this.destination);;
-        for (let i = 0; i < this.destination.length; i++){
-          this.destination[i] = this.destination[i].name
-        }
-       
-      });
-    } else{
-      this.destination = sessionStorage.getItem('destination');
-      this.destination =  JSON.parse(this.destination);;
- 
-      this.destination = this.destination.destination
-      return this.destination
-    }
-  }
-
-
   UpdateBackground(){
     if (window.innerWidth > 1199 ) {
       return this.image = this.planet.images.webp
     } else {
       return this.image = this.planet.images.png
     }  
+  }
+
+  getImage(): Observable<string> {
+    this.backgrounditem = this.UpdateBackground()
+    return this.backgrounditem;
+  }
+
+  firstLoad(){
+    this.planets =  sessionStorage.getItem('destination')
+    this.planets = JSON.parse(this.planets)
+
+   
+    for (let i = 0; i < this.planets.length; i++){
+      if (this.planets[i].name.trim() == this.id.name.trim()) {
+       
+        this.planet = this.planets[i] 
+      }
+    }
+  }
+  InitialLoad(){
+    if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
+      setTimeout(() => {
+        this.firstLoad();
+      }, 150);
+    }
+  }
+
+
 }
-
-getImage(): Observable<string> {
-  this.backgrounditem = this.UpdateBackground()
-  return this.backgrounditem;
-}
-
-
-
-}
-

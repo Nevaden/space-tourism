@@ -23,31 +23,17 @@ export class DestinationComponent implements OnInit {
     this.id = this.router.url.split("/")
     this.id = this.id[this.id.length-1]
     this.GetData();
-
-
-
-
-    // for (let i = 0; i < this.destination.length; i++){
-    //   if (this.id == this.destination[i].name ){
-    //     this.router.navigate(['/destination', this.destination[i].name]) 
-    //     this.found = true;
-    //     break;
-    //   } 
-    // };
   }
 
 
   
   GetData(){
-
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
-
-        this.destination = {'destination': data};
+        this.destination = {"destination":data};
         sessionStorage.setItem('destination',JSON.stringify(this.destination.destination) );
         this.destination = sessionStorage.getItem('destination');
         this.destination =  JSON.parse(this.destination);
-    
         if (!this.found || this.id == undefined ){
           this.matchPage();
         } 
@@ -71,7 +57,6 @@ export class DestinationComponent implements OnInit {
       } 
     }
     if (!this.found){
-      console.log(this.destination[0].name)
       this.router.navigate(['/destination', this.destination[0].name]) 
     }
     ;

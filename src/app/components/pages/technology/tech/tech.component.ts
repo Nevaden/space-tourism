@@ -22,52 +22,40 @@ export class TechComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router) { }
 
-  ngOnInit(): void {
-    this.id = {
-      name: this.route.snapshot.params['id'],   
-    }
-    
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id.name = params['id']    
+    ngOnInit(): void {
+
+      this.id = {
+        name: this.route.snapshot.params['id'],   
       }
-    )
-  this.getResolver();
-  // this.GetData();
+  
+      this.route.params.subscribe(
+        (params: Params) => {
+          this.id.name = params['id']  
+        }
+      )
+      
+        this.getResolverData();
+        this.InitialLoad();
+  
+    }
 
-}
 
-
-  getResolver() {
-    this.route.data.subscribe(
-      (data: Data) => {
-        this.technology = data['Tech']
+    getResolverData(){
+      this.route.data.subscribe(
+        (data: Data) => {
+          this.technology = data['Tech']
           for (let i = 0; i < this.technology.length; i++){
             if (this.technology[i].name.trim() == this.id.name.trim()) {
-              this.tech = this.technology[i]
+              this.tech = this.technology[i] 
+            }
           }
         }
-      }
-    );  
-  }
-
-
-
-  GetData(){
-    if(sessionStorage.getItem('technology')==null || sessionStorage.getItem('technology')==undefined) {
-      return this.dataService.getData('technology').subscribe((data) =>{
-        this.technology = {'technology': data}
-        sessionStorage.setItem('technology',JSON.stringify(this.technology) )
-        this.technology = sessionStorage.getItem('technology')
-        this.technology =  JSON.parse(this.technology)
-      });
-    } else{
-      this.technology = sessionStorage.getItem('technology')
-      this.technology =  JSON.parse(this.technology)
-      this.technology = this.technology.technology
-      return this.technology;
+      );
     }
-  }
+
+
+
+
 
   UpdateBackground(){
         if (window.innerWidth > 1199 ) {
@@ -82,13 +70,25 @@ export class TechComponent implements OnInit {
     return this.backgrounditem;
   }
 
-  // getPageData(): Observable<string> {
-  //     this.sessionTest = sessionStorage.getItem('technology')
-  //     console.log("session test get",this.sessionTest)
-  //     this.sessionTest =  JSON.parse(this.sessionTest)
-  //     return of(this.sessionTest);
-  //   }
-
+  firstLoad(){
+    this.technology =  sessionStorage.getItem('destination')
+    this.technology = JSON.parse(this.technology)
+ 
+   
+    for (let i = 0; i < this.technology.length; i++){
+      if (this.technology[i].name.trim() == this.id.name.trim()) {
+       
+        this.tech = this.technology[i] 
+      }
+    }
+  }
+  InitialLoad(){
+    if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
+      setTimeout(() => {
+        this.firstLoad();
+      }, 150);
+    }
+  } 
 
 
 }
