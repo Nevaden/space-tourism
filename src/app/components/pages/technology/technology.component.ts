@@ -36,6 +36,7 @@ export class TechnologyComponent implements OnInit {
         sessionStorage.setItem('technology',JSON.stringify(this.technology) )
         this.technology = sessionStorage.getItem('technology')
         this.technology =  JSON.parse(this.technology)
+        this.technology = this.technology.technology;
         if (!this.found || this.id == undefined ){
           this.matchPage();
         }   
