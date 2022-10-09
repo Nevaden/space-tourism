@@ -34,7 +34,7 @@ export class PlanetComponent implements OnInit {
         this.id.name = params['id']  
       }
     )
-    this.GetData();
+    // this.GetData();
     this.GetSessionData();
       // this.getResolverData();
 
@@ -58,13 +58,18 @@ export class PlanetComponent implements OnInit {
 
 
   GetSessionData() {
-   
-    for (let i = 0; i < this.destination.length; i++){
-      if (this.destination[i].name.trim() == this.id.name.trim()) {
-        return this.planet = this.destination[i]
+    return this.dataService.getSessionData('destination',"").subscribe((data: any) =>{
+      
+      this.destination = data;
+      console.log(this.destination,"yayasdasd tests")
+      this.destination = this.destination.destination
+      console.log(this.destination,"yay tests")
+
+      for (let i = 0; i < this.destination.length; i++){
+        this.destination[i] = this.destination[i].name
       }
- } 
-   
+    });
+  
   }
 //    get current page loop
 //   for (let i = 0; i < this.destination.length; i++){
@@ -114,8 +119,8 @@ export class PlanetComponent implements OnInit {
 }
 
 getImage(): Observable<string> {
-this.backgrounditem = this.UpdateBackground()
-return this.backgrounditem;
+  this.backgrounditem = this.UpdateBackground()
+  return this.backgrounditem;
 }
 
 

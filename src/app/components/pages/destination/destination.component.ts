@@ -45,6 +45,7 @@ export class DestinationComponent implements OnInit {
         this.destination = sessionStorage.getItem('destination');
         this.destination =  JSON.parse(this.destination);
         this.destination = this.destination.destination;
+        
         if (!this.found || this.id == undefined ){
           this.matchPage();
         } 
@@ -53,6 +54,7 @@ export class DestinationComponent implements OnInit {
       this.destination = sessionStorage.getItem('destination');
       this.destination =  JSON.parse(this.destination);
       this.destination = this.destination.destination;
+     
     }
     if (!this.found || this.id == undefined ){
       this.matchPage();

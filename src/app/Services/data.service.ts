@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 @Injectable({
@@ -44,14 +44,29 @@ export class DataService {
     return this.http.get(this.fieldUrl)
   }
 
-  getSessionData(page: string, subPage: string){
-    this.data = JSON.parse(sessionStorage.getItem('destination')!)
-    for (let i = 0; i < this.data.length; i++){
-      if(this.data[i].name.trim() == subPage.trim()){
-        this.data = this.data[i];
-      }
+  getSessionData(page: string, subPage: string): Observable<any>{
+    this.data = sessionStorage.getItem('destination');
+    console.log(this.data,"unaltered data")
+    if(typeof sessionStorage.getItem('destination')=='string' ||typeof sessionStorage.getItem('destination')==undefined){
+      console.log(this.data,"UNparsed data, if sessionitem existrs")
+      this.data = JSON.parse(this.data)
+      console.log(this.data[page],"parsed data, if sessionitem existrs")
+      return of(this.data,"after parse")
+    } else{
+      
+      this.getData(page);
+      this.data = JSON.parse(sessionStorage.getItem('destination')!)
+      console.log(this.data,"errr")  
+    return this.data;
+
     }
    
-    return this.data;
+    // for (let i = 0; i < this.data.length; i++){
+    //   if(this.data[i].name.trim() == subPage.trim()){
+        
+    //     this.data = this.data[i];
+    //   }
+    // }
+  
   }
 }
