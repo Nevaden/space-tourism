@@ -21,19 +21,19 @@ export class TechComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {
-
+      this.getParams()
+      this.getResolverData();
+      this.InitialLoad();
+    }
+    getParams(){
       this.id = {
         name: this.route.snapshot.params['id'],   
       }
-  
       this.route.params.subscribe(
         (params: Params) => {
           this.id.name = params['id']  
         }
       )
-      
-        this.getResolverData();
-        this.InitialLoad();
     }
 
     getResolverData(){
@@ -64,13 +64,6 @@ export class TechComponent implements OnInit {
     this.technology = JSON.parse(this.technology)
     this.techItems = Object.keys(this.technology)
     this.tech = this.technology[this.id.name]
-
-    // for (let i = 0; i < this.technology.length; i++){
-    //   if (this.technology[i].name.trim() == this.id.name.trim()) {
-       
-    //     this.tech = this.technology[i] 
-    //   }
-    // }
   }
 
   InitialLoad(){

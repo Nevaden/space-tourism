@@ -21,6 +21,12 @@ export class PlanetComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getParams();
+    this.getResolverData();
+    this.InitialLoad();
+  }
+
+  getParams(){
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
@@ -29,10 +35,7 @@ export class PlanetComponent implements OnInit {
         this.id.name = params['id']  
       }
     )
-      this.getResolverData();
-      this.InitialLoad();
   }
-
    getResolverData(){
     this.route.data.subscribe(
       (data: Data) => {

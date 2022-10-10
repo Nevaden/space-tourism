@@ -16,8 +16,7 @@ export class DestinationComponent implements OnInit {
   found: boolean | undefined = false;
 
   constructor(private dataService: DataService,
-    private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
