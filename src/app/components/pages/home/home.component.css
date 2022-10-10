@@ -147,6 +147,8 @@
     }
 
     .exploreButton{
+        z-index: 20;
+        position: relative;
         height: 274px;
         width: 274px;
     }
@@ -156,5 +158,24 @@
         line-height: 37px;
         letter-spacing: 2px;
         color: #0B0D17;
+    }
+    .exploreButton:hover::before{
+
+        height: 450px;
+        width: 450px;
+        cursor: pointer;
+    }
+    .exploreButton::before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 0px;
+        width: 0px;
+        z-index: 3;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: 0.3s linear;
     }
 }
