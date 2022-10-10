@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 81px;
-    z-index: -6;
+    z-index: 2;
 }
 
 .exploreButton{
