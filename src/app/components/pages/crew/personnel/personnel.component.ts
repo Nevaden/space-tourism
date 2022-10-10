@@ -15,23 +15,18 @@ export class PersonnelComponent implements OnInit {
   image: any;
   backgrounditem: any;
   constructor(private dataService: DataService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
    this.id = {
       name: this.route.snapshot.params['id'],   
     }
-    // this.GetData();
     this.getResolverData();
     this.route.params.subscribe(
       (params: Params) => {
         this.id.name = params['id']  
       }
     )
-
-
-    
   }
 
   getResolverData(){

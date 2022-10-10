@@ -26,8 +26,6 @@ export class PlanetComponent implements OnInit {
     this.id = {
       name: this.route.snapshot.params['id'],   
     }
-    // this.GetData();
-
     
     this.route.params.subscribe(
       (params: Params) => {
@@ -53,17 +51,6 @@ export class PlanetComponent implements OnInit {
     );
   }
 
-  GetSessionData(){
-    this.dataService.getSessionData("destination",this.id.name).subscribe((data) => {
-      this.planet = data;
-      console.log(this.planet, "data session")
-      for (let i = 0; i < this.planet.length; i++){
-        if (this.planet[i].name.trim() == this.id.name.trim()) {
-          this.planet = this.planet[i]
-        }
-      }    
-    })
-  }
   
   GetData(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
@@ -94,8 +81,8 @@ export class PlanetComponent implements OnInit {
 }
 
 getImage(): Observable<string> {
-this.backgrounditem = this.UpdateBackground()
-return this.backgrounditem;
+  this.backgrounditem = this.UpdateBackground()
+  return this.backgrounditem;
 }
 
 

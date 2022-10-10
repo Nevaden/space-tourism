@@ -66,19 +66,4 @@ export class TechnologyComponent implements OnInit {
     ;
   }
 
-  // GetData(){
-  //   if(sessionStorage.getItem('technology')==null) {
-  //     return this.dataService.getData().subscribe((data) =>{
-  //       sessionStorage.setItem('technology',JSON.stringify(data.technology) )
-  //       sessionStorage.setItem('destinations',JSON.stringify(data.destinations) )
-  //       sessionStorage.setItem('crew',JSON.stringify(data.crew) )
-  //       this.technology = sessionStorage.getItem('technology');
-  //       this.technology = JSON.parse(this.technology);
-  //     });
-  //   } else{
-  //     return true;
-  //   }
-  // }
-
-
 }

@@ -33,8 +33,6 @@ export class TechComponent implements OnInit {
       }
     )
   this.getResolver();
-  // this.GetData();
-
 }
 
 
@@ -81,14 +79,5 @@ export class TechComponent implements OnInit {
     this.backgrounditem = this.UpdateBackground()
     return this.backgrounditem;
   }
-
-  // getPageData(): Observable<string> {
-  //     this.sessionTest = sessionStorage.getItem('technology')
-  //     console.log("session test get",this.sessionTest)
-  //     this.sessionTest =  JSON.parse(this.sessionTest)
-  //     return of(this.sessionTest);
-  //   }
-
-
 
 }
