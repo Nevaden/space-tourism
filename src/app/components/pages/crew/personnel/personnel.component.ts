@@ -35,7 +35,6 @@ export class PersonnelComponent implements OnInit {
 getResolverData(){
   this.route.data.subscribe(
     (data: Data) => {
-      console.log(data)
       this.crew = data['Person']
       this.crewMembers = Object.keys(this.crew)
       this.person = this.crew[this.id.name]
