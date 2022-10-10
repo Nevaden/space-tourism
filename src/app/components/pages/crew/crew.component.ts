@@ -24,8 +24,12 @@ export class CrewComponent implements OnInit {
   GetData(){
     if(sessionStorage.getItem('crew')==null || sessionStorage.getItem('crew')==undefined) {
       return this.dataService.getData('crew').subscribe((data) =>{
-        this.crew = {"crew":data};
-        sessionStorage.setItem('crew',JSON.stringify(this.crew.crew) );
+        this.crew = {};
+        for (let i = 0; i < data.length; i++){
+          this.crew[data[i].name] = data[i];
+        }
+
+        sessionStorage.setItem('crew',JSON.stringify(this.crew) );
         this.crew = sessionStorage.getItem('crew');
         this.crew =  JSON.parse(this.crew);
         if (!this.found || this.id == undefined ){
@@ -43,16 +47,16 @@ export class CrewComponent implements OnInit {
   }
 
   matchPage(){
-    for (let i = 0; i < this.crew.length; i++){
-      if (this.id == this.crew[i].name.replace( " ", '%20') ){
-        this.router.navigate(['/crew', this.crew[i].name]) 
-        this.found = true;
-        break;
-      } 
-    }
+    if (Object.keys(this.crew).includes(this.id.replace("%20", " "))){
+      console.log("found")
+      this.router.navigate(['/crew', this.id.replace('%20'," ")]) 
+      this.found = true;   
+    } 
+    
     if (!this.found){
-      this.router.navigate(['/crew', this.crew[0].name]) 
-    }
-    ;
+      this.router.navigate(['/crew', Object.keys(this.crew)[0]]) 
+    }; 
   }
+
+
 }

@@ -23,8 +23,11 @@ export class TechnologyComponent implements OnInit {
     GetData(){
       if(sessionStorage.getItem('technology')==null || sessionStorage.getItem('technology')==undefined) {
         return this.dataService.getData('technology').subscribe((data) =>{
-          this.technology = {"technology":data};
-          sessionStorage.setItem('technology',JSON.stringify(this.technology.technology) );
+          this.technology = {};
+          for (let i = 0; i < data.length; i++){
+            this.technology[data[i].name] = data[i];
+          }          
+          sessionStorage.setItem('technology',JSON.stringify(this.technology));
           this.technology = sessionStorage.getItem('technology');
           this.technology =  JSON.parse(this.technology);
           if (!this.found || this.id == undefined ){
@@ -42,18 +45,13 @@ export class TechnologyComponent implements OnInit {
     }
 
   matchPage(){
-    for (let i = 0; i < this.technology.length; i++){
-      if (this.id == this.technology[i].name.replace( " ", '%20') ){
-        this.router.navigate(['/technology', this.technology[i].name]) 
-        this.found = true;
-        break;
-      } 
-    }
+    if (Object.keys(this.technology).includes(this.id.replace( "%20", " ")) ){
+      this.router.navigate(['/technology', this.id.replace('%20'," ")]) 
+      this.found = true;
+    } 
     if (!this.found){
-      this.router.navigate(['/technology', this.technology[0].name]) 
+      this.router.navigate(['/technology', Object.keys(this.technology)[0]]) 
     }
     ;
   }
-
-
 }

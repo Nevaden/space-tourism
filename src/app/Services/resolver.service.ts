@@ -9,12 +9,8 @@ import { DataService } from './data.service';
 })
 export class ResolverService implements Resolve<Planet> {
   constructor(private dataService: DataService) {}
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Planet> 
+  resolve(route: ActivatedRouteSnapshot): Observable<Planet> 
   | Promise<Planet> | Planet  {
-    // let returnValue = sessionStorage.getItem(route.params['id'])
-    // return sessionStorage.getItem(route.params['id'])
      return this.dataService.getDataPage(route.parent?.routeConfig?.path!,route.params['id'] )
   }
-
-
 }

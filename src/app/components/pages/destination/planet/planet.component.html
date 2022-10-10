@@ -4,7 +4,7 @@
     <img class="image" (window:resize)="getImage()" [src]="getImage()" alt="">
     <article class="textContainer">
         <ul class="planetList" >
-            <li *ngFor="let listItem of planets" id={{listItem.name}} [routerLink]="['/destination',listItem.name]" routerLinkActive="Active">{{listItem.name | uppercase}}</li>
+            <li *ngFor="let listItem of destinations let i = index" id={{listItem}} [routerLink]="['/destination',listItem]" routerLinkActive="Active">{{listItem | uppercase}}</li>
         </ul>
 
         <h2 class="name">{{planet.name | uppercase}}</h2>

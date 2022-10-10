@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/Services/data.service';
-import { ActivatedRoute, Data, Params, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { ActivatedRoute, Data, Params } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,6 +10,7 @@ import { Observable, of } from 'rxjs';
 })
 export class PlanetComponent implements OnInit {
   destination: any;
+  destinations: any;
   planets: any = [];
   planet: any = {};
   id: any= null;
@@ -31,20 +31,14 @@ export class PlanetComponent implements OnInit {
     )
       this.getResolverData();
       this.InitialLoad();
-      
   }
-
 
    getResolverData(){
     this.route.data.subscribe(
       (data: Data) => {
-        this.planets = data['Planet']
-        for (let i = 0; i < this.planets.length; i++){
-          if (this.planets[i].name.trim() == this.id.name.trim()) {
-            this.planet = this.planets[i] 
-            
-          }
-        }
+        this.planets = data['Planet'];
+        this.destinations = Object.keys(this.planets)
+        this.planet = this.planets[this.id.name]
       }
     );
   }
@@ -66,18 +60,15 @@ export class PlanetComponent implements OnInit {
   firstLoad(){
     this.planets =  sessionStorage.getItem('destination')
     this.planets = JSON.parse(this.planets)
-    for (let i = 0; i < this.planets.length; i++){
-      if (this.planets[i].name.trim() == this.id.name.trim()) {
-       
-        this.planet = this.planets[i] 
-      }
-    }
+    this.destinations = Object.keys(this.planets)
+    this.planet = this.planets[this.id.name]
   }
+
   InitialLoad(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
         this.firstLoad();
-      }, 1000);
+      }, 100);
     }
   }
 

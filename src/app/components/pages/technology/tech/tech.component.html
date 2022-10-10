@@ -2,7 +2,7 @@
     <img class="image" (window:resize)="getImage()" [src]="getImage()" alt="techonology image">
     <article class="textContainer">
         <ul class="techlList">
-            <li *ngFor="let listItem of technology; let i = index" id={{listItem.name}} class={{listItem.name}} routerLinkActive="active" [routerLink]="['/technology',listItem.name]">{{i+1}}</li>
+            <li *ngFor="let listItem of techItems; let i = index" id={{listItem}} class={{listItem}} routerLinkActive="active" [routerLink]="['/technology',listItem]">{{i+1}}</li>
         </ul>  
         <section class="techItems">
             <p class="terminology">THE TERMINOLOGY...</p>

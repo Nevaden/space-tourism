@@ -11,7 +11,7 @@
             </div>
 
         <ul class="personnelList">
-            <li *ngFor="let listItem of crew" id={{listItem.name}} [routerLink]="['/crew',listItem.name]" routerLinkActive="Active"></li>
+            <li *ngFor="let listItem of crewMembers" id={{listItem}} [routerLink]="['/crew',listItem]" routerLinkActive="Active"></li>
         </ul>  
         </article>
         <div class="imageContainer">

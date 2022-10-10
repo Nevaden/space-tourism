@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/Services/data.service';
-import { ActivatedRoute, Data, Params, Router } from '@angular/router';
+import { ActivatedRoute, Data, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,6 +13,7 @@ export class PersonnelComponent implements OnInit {
   id: any= null;
   image: any;
   backgrounditem: any;
+  crewMembers: any;
   constructor(private route: ActivatedRoute) { }
 
     ngOnInit(): void {
@@ -29,18 +29,16 @@ export class PersonnelComponent implements OnInit {
         this.InitialLoad();
     }
 
-  getResolverData(){
-    this.route.data.subscribe(
-      (data: Data) => {
-        this.crew = data['Person']
-        for (let i = 0; i < this.crew.length; i++){
-          if (this.crew[i].name.trim() == this.id.name.trim()) {
-            this.person = this.crew[i]
-          }
-        }
-      }
-    );  
-  }
+getResolverData(){
+  this.route.data.subscribe(
+    (data: Data) => {
+      console.log(data)
+      this.crew = data['Person']
+      this.crewMembers = Object.keys(this.crew)
+      this.person = this.crew[this.id.name]
+    }
+  );
+}
 
   UpdateBackground(){
     if (window.innerWidth > 1199 ) {
@@ -56,22 +54,17 @@ export class PersonnelComponent implements OnInit {
   }
 
   firstLoad(){
-    this.crew =  sessionStorage.getItem('crew')
+    this.crew =  sessionStorage.getItem('destination')
     this.crew = JSON.parse(this.crew)
-
-   
-    for (let i = 0; i < this.crew.length; i++){
-      if (this.crew[i].name.trim() == this.id.name.trim()) {
-       
-        this.person = this.crew[i] 
-      }
-    }
+    this.crewMembers = Object.keys(this.crew)
+    this.person = this.person[this.id.name]
   }
+
   InitialLoad(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
       setTimeout(() => {
         this.firstLoad();
-      }, 1000);
+      }, 100);
     }
   }
 

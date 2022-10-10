@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/Services/data.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class DestinationComponent implements OnInit {
   id: any;
   data: any;
   storeObject: object = {};
+  testObj: any;
   found: boolean | undefined = false;
 
   constructor(private dataService: DataService,
@@ -30,8 +31,11 @@ export class DestinationComponent implements OnInit {
   GetData(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
-        this.destination = {"destination":data};
-        sessionStorage.setItem('destination',JSON.stringify(this.destination.destination) );
+        this.destination = {};
+        for (let i = 0; i < data.length; i++){
+          this.destination[data[i].name] = data[i];
+        }
+        sessionStorage.setItem('destination',JSON.stringify(this.destination));
         this.destination = sessionStorage.getItem('destination');
         this.destination =  JSON.parse(this.destination);
         if (!this.found || this.id == undefined ){
@@ -49,17 +53,13 @@ export class DestinationComponent implements OnInit {
   }
 
   matchPage(){
-    for (let i = 0; i < this.destination.length; i++){
-      if (this.id == this.destination[i].name ){
-        this.router.navigate(['/destination', this.destination[i].name]) 
-        this.found = true;
-        break;
-      } 
-    }
+    if (Object.keys(this.destination).includes(this.id) ){
+      this.router.navigate(['/destination', this.id]) 
+      this.found = true;   
+    } 
+    
     if (!this.found){
-      this.router.navigate(['/destination', this.destination[0].name]) 
-    }
-    ;
+      this.router.navigate(['/destination', Object.keys(this.destination)[0]]) 
+    }; 
   }
-
 }

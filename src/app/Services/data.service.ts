@@ -27,6 +27,9 @@ export class DataService {
   getDataPage(field: string, subPage: string){ 
     this.data = sessionStorage.getItem(field)
     this.data = JSON.parse(this.data)
+    // console.log(this.data,"before sub")
+    // this.data = this.data[subPage];
+    // console.log(this.data,"after sub")
     return this.data
   }
 

@@ -1,7 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { DataService } from 'src/app/Services/data.service';
-import { ActivatedRoute, Data, Params, Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+
+import { ActivatedRoute, Data, Params } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -12,7 +12,7 @@ import { Observable, of } from 'rxjs';
 export class TechComponent implements OnInit {
   technology: any;
   image: any;
-
+  techItems: any;
   tech: any = {};
   id: any= null;
   backgrounditem: any;
@@ -36,16 +36,12 @@ export class TechComponent implements OnInit {
         this.InitialLoad();
     }
 
-
     getResolverData(){
       this.route.data.subscribe(
         (data: Data) => {
-          this.technology = data['Tech']
-          for (let i = 0; i < this.technology.length; i++){
-            if (this.technology[i].name.trim() == this.id.name.trim()) {
-              this.tech = this.technology[i]  
-            }
-          }
+          this.technology = data['Tech'];
+          this.techItems = Object.keys(this.technology)
+          this.tech = this.technology[this.id.name]
         }
       );
     }
@@ -64,24 +60,24 @@ export class TechComponent implements OnInit {
   }
 
   firstLoad(){
-    this.technology =  sessionStorage.getItem('destination')
+    this.technology =  sessionStorage.getItem('technology')
     this.technology = JSON.parse(this.technology)
-    console.log(this.technology,"techno")
-    for (let i = 0; i < this.technology.length; i++){
-      if (this.technology[i].name.trim() == this.id.name.trim()) {
+    this.techItems = Object.keys(this.technology)
+    this.tech = this.technology[this.id.name]
+
+    // for (let i = 0; i < this.technology.length; i++){
+    //   if (this.technology[i].name.trim() == this.id.name.trim()) {
        
-        this.tech = this.technology[i] 
-      }
-    }
+    //     this.tech = this.technology[i] 
+    //   }
+    // }
   }
+
   InitialLoad(){
-    if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined){
+    if(sessionStorage.getItem('technology')==null || sessionStorage.getItem('technology')==undefined){
       setTimeout(() => {
-        console.log("wait ahain")
         this.firstLoad();
-      }, 1000);
+      }, 100);
     }
   } 
-
-
 }
