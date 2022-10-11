@@ -12,11 +12,13 @@ export class DestinationComponent implements OnInit {
   id: any;
   data: any;
   storeObject: object = {};
+  subLoad: any;
   testObj: any;
   found: boolean | undefined = false;
 
   constructor(private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
     ) { }
 
   ngOnInit(): void {
@@ -26,7 +28,7 @@ export class DestinationComponent implements OnInit {
   }
 
 
-  
+
   GetData(){
     if(sessionStorage.getItem('destination')==null || sessionStorage.getItem('destination')==undefined) {
       return this.dataService.getData('destination').subscribe((data) =>{
@@ -61,4 +63,5 @@ export class DestinationComponent implements OnInit {
       this.router.navigate(['/destination', Object.keys(this.destination)[0]]) 
     }; 
   }
+
 }

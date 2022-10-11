@@ -12,7 +12,8 @@ import { DataService } from './Services/data.service';
 import { PlanetComponent } from './components/pages/destination/planet/planet.component';
 import { ResolverService } from './Services/resolver.service';
 import { PersonnelComponent } from './components/pages/crew/personnel/personnel.component';
-import { TechComponent } from './components/pages/technology/tech/tech.component'; 
+import { TechComponent } from './components/pages/technology/tech/tech.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { TechComponent } from './components/pages/technology/tech/tech.component
     NavComponent,
     PlanetComponent,
     PersonnelComponent,
-    TechComponent
+    TechComponent,
   ],
   imports: [
     BrowserModule,

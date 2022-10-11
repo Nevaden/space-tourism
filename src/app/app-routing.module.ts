@@ -14,12 +14,15 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'destination', component: DestinationComponent, children: [
     {path: ':id', component: PlanetComponent, resolve: {Planet: ResolverService}},
+    // {path: '', redirectTo: "Moon", pathMatch: "full"}
   ]},
   {path: 'crew', component: CrewComponent, children: [
     {path: ':id', component: PersonnelComponent, resolve: {Person: ResolverService}},
+    // {path: '', redirectTo: "Douglas Hurley", pathMatch: "full"}
   ]},
   {path: 'technology', component: TechnologyComponent, children: [
     {path: ':id', component: TechComponent, resolve: {Tech: ResolverService}},
+    // {path: '', redirectTo: "Launch vehicle", pathMatch: "full"}
   ]},
   {path: '*', component: HomeComponent}
 ];

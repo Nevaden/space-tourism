@@ -1,12 +1,15 @@
 .displayNone {
     display: none;
 }
-
 .displayFlex {
     display: flex;
 }
 .displayBlock {
     display: block;
+}
+
+.active{
+    pointer-events: none;
 }
 
 .backDrop{

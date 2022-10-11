@@ -48,7 +48,6 @@ export class CrewComponent implements OnInit {
 
   matchPage(){
     if (Object.keys(this.crew).includes(this.id.replace("%20", " "))){
-      console.log("found")
       this.router.navigate(['/crew', this.id.replace('%20'," ")]) 
       this.found = true;   
     } 
