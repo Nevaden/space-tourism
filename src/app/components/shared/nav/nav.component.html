@@ -4,7 +4,8 @@
   <nav class="navItems">
     <div class="dumbLine"></div>
     <a class="navItem" routerLinkActive="active" routerLink="/home"><p>00</p>HOME</a>
-    <a class="navItem" routerLinkActive="active" routerLink="/destination"
+    <a class="navItem" routerLinkActive="active" routerLink='/destination' 
+    [routerLinkActiveOptions]="{ exact: false }"
       ><p>01</p>DESTINATION</a
     >
     <a class="navItem" routerLinkActive="active" routerLink="/crew"><p>02</p>CREW</a>
