@@ -135,12 +135,23 @@
 
 
 @media only screen and (min-width: 1200px) {
+
     .large{
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-top: 40px;
     }
+    .dumbLine{
+        position: absolute;
+        width: 473px;
+        left: -445px;
+        height: 1px;
+        background: #FFFFFF;
+        mix-blend-mode: normal;
+        opacity: 0.25;
+    }
+
     .hr{
         display: block;
         position: absolute;
@@ -153,7 +164,7 @@
         width: 830px;
         height: 96px;
         margin-top:0px;
-
+        position: relative;
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(40.7742px);
     }
